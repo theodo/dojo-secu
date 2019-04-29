@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.4/phpunit.xsd"
+    bootstrap="tests/phpunit.bootstrap.php"
+>
+    <php>
+        <ini name="error_reporting" value="-1" />
+        <env name="KERNEL_CLASS" value="App\Kernel" />
+        <env name="APP_ENV" value="test" force="true" />
+        <env name="APP_SECRET" value="Ge0rgesMoustaki" />
+        <env name="APP_DEBUG" value="0" />
+        <env name="TEST_DATABASE_URL" value="postgres://seed:Ge0rgesMoustaki@localhost/seed" force="true" />
+        <env name="CORS_ALLOW_ORIGIN" value="^https?://localhost(:[0-9]+)?$" />
+
+        <!-- ###+ lexik/jwt-authentication-bundle ### -->
+        <env name="JWT_SECRET_KEY" value="%kernel.project_dir%/tests/jwt/private.pem"/>
+        <env name="JWT_PUBLIC_KEY" value="%kernel.project_dir%/tests/jwt/public.pem"/>
+        <env name="JWT_PASSPHRASE" value="lolilol"/>
+        <!-- ###- lexik/jwt-authentication-bundle ### -->
+    </php>
+    <testsuites>
+        <testsuite name="Functional tests">
+            <directory>tests/Security</directory>
+            <directory>tests/Controller</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>src</directory>
+        </whitelist>
+    </filter>
+    <listeners>
+        <listener class="\DAMA\DoctrineTestBundle\PHPUnit\PHPUnitListener" />
+    </listeners>
+</phpunit>
