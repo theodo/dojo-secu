@@ -2,14 +2,9 @@ version: "3.4"
 
 services:
   php:
-    image: ${CONTAINER_REGISTRY_BASE}/php
     build:
       context: ./backend
       target: api_platform_php
-      cache_from:
-        - ${CONTAINER_REGISTRY_BASE}/php
-        - ${CONTAINER_REGISTRY_BASE}/nginx
-        - ${CONTAINER_REGISTRY_BASE}/varnish
     depends_on:
       - db
       - db-test
@@ -23,14 +18,9 @@ services:
       PHP_IDE_CONFIG: serverName=PHPSTORM
 
   api:
-    image: ${CONTAINER_REGISTRY_BASE}/nginx
     build:
       context: ./backend
       target: api_platform_nginx
-      cache_from:
-        - ${CONTAINER_REGISTRY_BASE}/php
-        - ${CONTAINER_REGISTRY_BASE}/nginx
-        - ${CONTAINER_REGISTRY_BASE}/varnish
     depends_on:
       - php
     # Comment out this volume in production
@@ -40,14 +30,9 @@ services:
       - "8000:80"
 
   cache-proxy:
-    image: ${CONTAINER_REGISTRY_BASE}/varnish
     build:
       context: ./backend
       target: api_platform_varnish
-      cache_from:
-        - ${CONTAINER_REGISTRY_BASE}/php
-        - ${CONTAINER_REGISTRY_BASE}/nginx
-        - ${CONTAINER_REGISTRY_BASE}/varnish
     depends_on:
       - api
     volumes:
