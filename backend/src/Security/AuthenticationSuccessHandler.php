@@ -4,7 +4,6 @@ namespace App\Security;
 
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Http\Authentication\AuthenticationSuccessHandler as LexikAuthenticationSuccessHandler;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -39,7 +38,7 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
     {
         $user = $token->getUser();
 
-        if(!$user instanceof UserInterface) {
+        if (!$user instanceof UserInterface) {
             throw new AuthenticationException();
         }
 

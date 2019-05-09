@@ -3,7 +3,6 @@
 namespace App\Security;
 
 use Lexik\Bundle\JWTAuthenticationBundle\Encoder\JWTEncoderInterface;
-
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -28,7 +27,9 @@ class RefreshTokenManager
 
     /**
      * @param UserInterface $user
+     *
      * @return Cookie
+     *
      * @throws \Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTEncodeFailureException
      */
     public function createCookie(UserInterface $user)
@@ -36,7 +37,7 @@ class RefreshTokenManager
         $refreshToken = $this->jwtEncoder->encode([
             self::ID_FIELD => $user->getUsername(),
             self::CREATION_DATE_FIELD => time(),
-            self::EXPIRATION_DATE_FIELD => time() + self::TEN_YEARS
+            self::EXPIRATION_DATE_FIELD => time() + self::TEN_YEARS,
         ]);
 
         return new Cookie(self::REFRESH_TOKEN, $refreshToken, 0, '/', null, true);

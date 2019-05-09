@@ -43,7 +43,7 @@ class JWTAuthenticationTest extends WebTestCase
         $this->assertNotEmpty(array_filter(
             $authenticatedClient->getResponse()->headers->getCookies(),
             function ($cookie) {
-                return $cookie->getName() === RefreshTokenManager::REFRESH_TOKEN && $cookie->getValue() !== null;
+                return RefreshTokenManager::REFRESH_TOKEN === $cookie->getName() && null !== $cookie->getValue();
             }
         ));
 
@@ -76,7 +76,7 @@ class JWTAuthenticationTest extends WebTestCase
         );
 
         $this->assertTrue($authenticatedClient->getResponse()->isOk());
-        $this->assertContains('access' , $authenticatedClient->getResponse()->getContent());
+        $this->assertContains('access', $authenticatedClient->getResponse()->getContent());
     }
 
     /**
@@ -89,7 +89,7 @@ class JWTAuthenticationTest extends WebTestCase
         $this->assertNotEmpty(array_filter(
             $authenticatedClient->getResponse()->headers->getCookies(),
             function ($cookie) {
-                return $cookie->getName() === RefreshTokenManager::REFRESH_TOKEN && $cookie->getValue() !== null;
+                return RefreshTokenManager::REFRESH_TOKEN === $cookie->getName() && null !== $cookie->getValue();
             }
         ));
 
@@ -101,7 +101,7 @@ class JWTAuthenticationTest extends WebTestCase
         $this->assertEmpty(array_filter(
             $authenticatedClient->getResponse()->headers->getCookies(),
             function ($cookie) {
-                return $cookie->getName() === RefreshTokenManager::REFRESH_TOKEN && $cookie->getValue() !== null;
+                return RefreshTokenManager::REFRESH_TOKEN === $cookie->getName() && null !== $cookie->getValue();
             }
         ));
     }

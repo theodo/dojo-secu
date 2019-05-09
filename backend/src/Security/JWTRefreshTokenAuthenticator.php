@@ -34,8 +34,8 @@ class JWTRefreshTokenAuthenticator extends AbstractGuardAuthenticator
         JWTEncoderInterface $jwtEncoder,
         AuthenticationSuccessHandler $authenticationSuccessHandler
     ) {
-        $this->jwtEncoder                    = $jwtEncoder;
-        $this->authenticationSuccessHandler  = $authenticationSuccessHandler;
+        $this->jwtEncoder = $jwtEncoder;
+        $this->authenticationSuccessHandler = $authenticationSuccessHandler;
     }
 
     public function supports(Request $request)
