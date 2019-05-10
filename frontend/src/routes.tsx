@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router';
 const Home = lazy(() => import('./pages/Home'));
 const Login = lazy(() => import('./pages/Login'));
 const Avatar = lazy(() => import('./pages/Avatar'));
+const Profile = lazy(() => import('./pages/Profile'));
 
 const routes = () => (
   <Suspense fallback={<div>Loading...</div>}>
@@ -11,6 +12,7 @@ const routes = () => (
       <Route exact path="/" component={Home} />
       <Route path="/login" component={Login} />
       <Route path="/avatar" component={Avatar} />
+      <Route path="/profile" component={Profile} />
     </Switch>
   </Suspense>
 );
