@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -11,6 +13,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserSearchController extends AbstractController
 {
+    private const FORBIDDEN_QUERIES = [
+        'drop',
+        'truncate',
+        'delete',
+        'update',
+        'alter',
+    ];
+
     /** @var EntityManagerInterface */
     private $em;
 
@@ -26,12 +36,10 @@ class UserSearchController extends AbstractController
     {
         $query = $request->query->get('query');
 
-        if(strpos( \strToLower($query), 'drop' ) !== false) {
-            throw new BadRequestHttpException('You are trying to drop the db, that is not nice :(');
-        }
-
-        if(strpos( \strToLower($query), 'truncate' ) !== false) {
-            throw new BadRequestHttpException('You are trying to truncate the db, that is not nice :(');
+        foreach (self::FORBIDDEN_QUERIES as $forbiddenQuery) {
+            if(strpos( \strToLower($query), $forbiddenQuery ) !== false) {
+                throw new BadRequestHttpException(sprintf('You are trying to %s the db, that is not nice :(', $forbiddenQuery));
+            }
         }
 
         $RAW_QUERY = "SELECT * FROM app_users WHERE email='".$query."';";
