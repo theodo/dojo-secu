@@ -27,9 +27,8 @@ const Root: React.FunctionComponent<Props> = ({ children }) => (
   <IntlProvider locale="fr" messages={locales.fr}>
     <MainContainer>
       <Header>
-        <Logo src={logo} alt="logo" />
         <Typography variant="h2" color="primary">
-          Welcome to Seed
+          Welcome
         </Typography>
         <LogoutButton />
       </Header>

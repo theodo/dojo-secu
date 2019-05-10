@@ -9,7 +9,7 @@ MainContainer.displayName = 'MainContainer';
 
 export const Header = styled.div`
   background-color: ${colorUsage.headerBackground};
-  height: 180px;
+  height: 100px;
   padding: ${getSpacing(4)};
 `;
 
