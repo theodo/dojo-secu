@@ -4,12 +4,12 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class UserSearchController extends AbstractController
 {
@@ -21,12 +21,12 @@ class UserSearchController extends AbstractController
         'alter',
     ];
 
-    /** @var EntityManagerInterface */
-    private $em;
+    /** @var NormalizerInterface */
+    private $normalizer;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(NormalizerInterface $denormalizer)
     {
-        $this->em = $em;
+        $this->normalizer = $denormalizer;
     }
 
     /**
@@ -37,16 +37,15 @@ class UserSearchController extends AbstractController
         $query = $request->query->get('query');
 
         foreach (self::FORBIDDEN_QUERIES as $forbiddenQuery) {
-            if(strpos( \strToLower($query), $forbiddenQuery ) !== false) {
+            if (false !== strpos(\strtolower($query), $forbiddenQuery)) {
                 throw new BadRequestHttpException(sprintf('You are trying to %s the db, that is not nice :(', $forbiddenQuery));
             }
         }
 
-        $RAW_QUERY = "SELECT * FROM app_users WHERE email='".$query."';";
+        /** @var UserRepository $result */
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $result = $repository->dangerouslySearchByEmail($query);
 
-        $statement = $this->em->getConnection()->prepare($RAW_QUERY);
-        $statement->execute();
-
-        return new JsonResponse($statement->fetchAll());
+        return new JsonResponse($result);
     }
 }
