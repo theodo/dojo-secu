@@ -4,11 +4,11 @@ import {
   Form,
   InjectedFormikProps,
 } from 'formik';
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Redirect } from 'react-router';
 
 import Input from 'components/Input';
 
-import { MessageContainer, Token } from './Login.form.style';
 import { FormValues } from './service';
 
 interface InnerLoginFormProps {
@@ -29,47 +29,38 @@ const InnerLoginForm: React.FunctionComponent<InjectedFormikProps<InnerLoginForm
   const { errors, touched, isSubmitting, token } = props;
 
   return (
-    <Form>
-      <div>
-        <Field
-          type="text"
-          name="email"
-          label="Email"
-          component={Input}
-          error={touched.email && errors.email}
-        />
-      </div>
-      <div>
-        <Field
-          type="password"
-          name="password"
-          label="Password"
-          component={Input}
-          error={touched.password && errors.password}
-        />
-      </div>
-      <Button
-        type="submit"
-        color="primary"
-        size="medium"
-        disabled={isSubmitting}
-        variant="outlined"
-      >
-        Connect
-      </Button>
-        {!token
-          ? null
-          : <MessageContainer>
-            <span>
-              Félicitations, vous êtes bien connectés avec le token :
-            </span>
-            <br/>
-            <Token>
-              {token}
-            </Token>
-          </MessageContainer>
-        }
-    </Form>
+    <Fragment>
+      {token && <Redirect to='/profile' />}
+      <Form>
+        <div>
+          <Field
+            type="text"
+            name="email"
+            label="Email"
+            component={Input}
+            error={touched.email && errors.email}
+          />
+        </div>
+        <div>
+          <Field
+            type="password"
+            name="password"
+            label="Password"
+            component={Input}
+            error={touched.password && errors.password}
+          />
+        </div>
+        <Button
+          type="submit"
+          color="primary"
+          size="medium"
+          disabled={isSubmitting}
+          variant="outlined"
+        >
+          Connect
+        </Button>
+      </Form>
+    </Fragment>
   );
 };
 
