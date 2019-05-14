@@ -1,8 +1,8 @@
-import { AvatarAction, AvatarState } from './Avatar';
+import { ProfileAction, ProfileState } from './Profile';
 import { LoginAction, LoginState } from './Login';
 
 export type RootState = Readonly<{
-  avatar: AvatarState;
+  user: ProfileState;
   login: LoginState;
 }>;
-export type RootAction = AvatarAction | LoginAction;
+export type RootAction = ProfileAction | LoginAction;

@@ -46,15 +46,20 @@ const checkAccessToken = async (requestFunction: Function) => {
 };
 
 export const makeGetRequest = async (endpoint: string, data: {} | null = null) =>
-  await checkAccessToken(() => {
+await checkAccessToken(() => {
+    const token = localStorage.getItem('token');
     if (data === null) {
-      return request.get(`${baseUrl}${endpoint}`).set('Accept', 'application/json');
+      return request
+        .get(`${backendBaseUrl}${endpoint}`)
+        .set('Accept', 'application/json')
+        .set('Authorization', token ? `Bearer ${token}` : '');
     }
 
     return request
       .get(`${baseUrl}${endpoint}`)
       .query(data)
-      .set('Accept', 'application/json');
+      .set('Accept', 'application/json')
+      .set('Authorization', token ? token : '');
   });
 
 export const makePostRequest = async (endpoint: string, data: {}) =>
@@ -64,6 +69,18 @@ export const makePostRequest = async (endpoint: string, data: {}) =>
       .send(data)
       .set('Accept', 'application/json'),
   );
+
+
+export const makePutRequest = async (endpoint: string, data: {}) =>
+  await checkAccessToken(() => {
+      const token = localStorage.getItem('token');
+
+      return request
+          .put(`${backendBaseUrl}${endpoint}`)
+          .send(data)
+          .set('Accept', 'application/json')
+          .set('Authorization', token ? `Bearer ${token}` : '');
+  });
 
 export const makeLoginRequest = (endpoint: string, data: {}) =>
   request.post(`${backendBaseUrl}${endpoint}`).send(data).withCredentials();
