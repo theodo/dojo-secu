@@ -15,9 +15,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class User implements UserInterface
 {
     public const ROLES = [
-        'level_one' => 'ROLE_MINION',
-        'level_two' => 'ROLE_ROOKIE',
-        'level_three' => 'ROLE_SOLDIER',
+        'level_one' => '55c3ee46d0eebd1ad5392a02cf48830df0ab6901',
+        'level_two' => 'a59ca43c08454e124ed252830b811dd63649e62a',
+        'level_three' => '370315690cfb42749c656c302369ce14291e1380',
+    ];
+
+    public const ROLES_NAMES = [
+        'level_one' => 'ROLE_CLONE',
+        'level_two' => 'ROLE_TROOPER',
+        'level_three' => 'ROLE_SQUAD_LEADER',
     ];
 
     /**
