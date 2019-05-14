@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
 /**
- * Create user table
+ * Create user table.
  */
 final class Version20190109145544 extends AbstractMigration
 {

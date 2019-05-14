@@ -14,6 +14,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class User implements UserInterface
 {
+    public const ROLES = [
+        'level_one' => 'ROLE_MINION',
+        'level_two' => 'ROLE_ROOKIE',
+        'level_three' => 'ROLE_SOLDIER',
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -32,7 +38,7 @@ class User implements UserInterface
      * @ORM\Column(type="json")
      * @Groups({"users_read"})
      */
-    private $roles = [];
+    private $roles = [self::ROLES['level_one']];
 
     /**
      * @var string The hashed password
@@ -73,8 +79,8 @@ class User implements UserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        // guarantee every user at least has ROLE_MINION
+        $roles[] = self::ROLES['level_one'];
 
         return array_unique($roles);
     }
@@ -84,6 +90,16 @@ class User implements UserInterface
         $this->roles = $roles;
 
         return $this;
+    }
+
+    public function addRole(string $roleLevel): void
+    {
+        array_push($this->roles, self::ROLES[$roleLevel]);
+    }
+
+    public function resetRoles(): void
+    {
+        $this->roles = [self::ROLES['level_one']];
     }
 
     /**
