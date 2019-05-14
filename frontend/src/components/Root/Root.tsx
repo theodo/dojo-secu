@@ -8,7 +8,8 @@ import LogoutButton from 'components/LogoutButton';
 import { flattenMessages } from 'services/i18n/intl';
 import enMessages from 'translations/en.json';
 import frMessages from 'translations/fr.json';
-import logo from './pudding.png';
+import logo from './empire-logo.svg';
+import deathstar from './deathstar.png';
 
 import { Header, Logo, MainContainer } from './Root.style';
 
@@ -27,10 +28,12 @@ const Root: React.FunctionComponent<Props> = ({ children }) => (
   <IntlProvider locale="fr" messages={locales.fr}>
     <MainContainer>
       <Header>
-        <Typography variant="h2" color="primary">
+        <Logo src={logo} alt="logo" />
+        <Typography variant="h2" color="inherit">
           Welcome
         </Typography>
         <LogoutButton />
+        <Logo src={deathstar} alt="deathstar" />
       </Header>
       {children}
     </MainContainer>
