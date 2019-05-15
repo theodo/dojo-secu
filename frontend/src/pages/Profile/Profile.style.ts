@@ -1,7 +1,10 @@
 import styled from 'styled-components';
+import { colorUsage} from "stylesheet";
 
 const StyledProfile = styled.div`
-  display: flex;
+  height: 100%;
+  background-color: ${colorUsage.headerBackground};
+  color: white;
 `;
 
 export default StyledProfile;

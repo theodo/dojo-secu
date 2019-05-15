@@ -14,7 +14,7 @@ const LogoutButton: React.FunctionComponent<Props> = (props: Props) => {
 
   return isUserLoggedIn ? (
     <ButtonContainer>
-      <Button onClick={logout} color="primary" variant="contained">
+      <Button onClick={logout} variant="contained">
         <FormattedMessage id="header.deconnection-button" />
       </Button>
     </ButtonContainer>
