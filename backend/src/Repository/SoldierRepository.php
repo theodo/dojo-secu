@@ -23,6 +23,7 @@ class SoldierRepository extends ServiceEntityRepository
     public function dangerouslySearchByRank(string $rank): array
     {
         return $this->createQueryBuilder('u')
+            ->select('u.firstName, u.lastName')
             ->where('u.rank ='.$rank)
             ->getQuery()
             ->getResult(Query::HYDRATE_ARRAY);
