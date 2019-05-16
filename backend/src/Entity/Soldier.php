@@ -47,7 +47,7 @@ class Soldier
      * @var string
      * @ORM\Column(type="string")
      */
-    private $password;
+    private $accessCode;
 
     public function getId(): ?int
     {
@@ -86,14 +86,14 @@ class Soldier
         return $this;
     }
 
-    public function getPassword(): string
+    public function getAccessCode(): string
     {
-        return $this->password;
+        return $this->accessCode;
     }
 
-    public function setPassword(string $password): self
+    public function setAccessCode(string $accessCode): self
     {
-        $this->password = $password;
+        $this->accessCode = $accessCode;
         return $this;
     }
 }
