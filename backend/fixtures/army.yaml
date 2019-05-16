@@ -2,11 +2,41 @@ App\Entity\Soldier:
     corporal_1:
         firstName: 'Jerris'
         lastName: 'Kothari'
-        password: 'theEmpireWillWin'
+        accessCode: 'theEmpireWillWin'
+        rank: 'corporal'
+    corporal_2:
+        firstName: 'Taia'
+        lastName: 'Prost'
+        accessCode: 'theEmpireWillWin'
+        rank: 'corporal'
+    corporal_3:
+        firstName: 'Dagos'
+        lastName: 'Baralein'
+        accessCode: 'theEmpireWillWin'
+        rank: 'corporal'
+    corporal_4:
+        firstName: 'Firmus'
+        lastName: 'Kast'
+        accessCode: 'theEmpireWillWin'
+        rank: 'corporal'
+    corporal_5:
+        firstName: 'Maverik'
+        lastName: 'Auqom'
+        accessCode: 'theEmpireWillWin'
+        rank: 'corporal'
+    corporal_6:
+        firstName: 'Mikal'
+        lastName: 'Terrix'
+        accessCode: 'theEmpireWillWin'
+        rank: 'corporal'
+    corporal_7:
+        firstName: 'Surror'
+        lastName: 'Hyde'
+        accessCode: 'theEmpireWillWin'
         rank: 'corporal'
     commander_1:
         firstName: 'Akela'
         lastName: 'Brahnx'
-        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$bEVmWTRSMU9SeElEcVVjSQ\$klhb7874OJ7EgLtpxEyNfGG16RxeFTiflVLrxevwjnU' # = 'a secured password'
+        accessCode: '\$argon2i\$v=19\$m=1024,t=2,p=2\$bEVmWTRSMU9SeElEcVVjSQ\$klhb7874OJ7EgLtpxEyNfGG16RxeFTiflVLrxevwjnU' # = 'a secured password'
         rank: 'commander'
 
