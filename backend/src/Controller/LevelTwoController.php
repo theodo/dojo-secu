@@ -24,10 +24,10 @@ class LevelTwoController extends AbstractController
             throw new BadRequestHttpException('You have already been granted this role');
         }
 
-        $status = $request->query->get('i_am_soldier');
+        $status = $request->query->get('i_am_squad_leader');
 
         if (!\in_array(User::ROLES['level_two'], $user->getRoles()) || 'true' !== $status) {
-            throw new BadRequestHttpException('You need to prove that you are a soldier to execute this action');
+            throw new BadRequestHttpException('You need to prove that you are a squad leader to execute this action');
         }
 
         $user->addRole('level_three');
