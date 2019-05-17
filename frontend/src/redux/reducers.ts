@@ -23,6 +23,6 @@ export default function createReducer(asyncReducers: {
   return combineReducers<RootState, RootAction>({
     ...asyncReducers,
     login,
-    user,
+    user
   });
 }

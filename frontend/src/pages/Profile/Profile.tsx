@@ -7,12 +7,51 @@ interface ProfileProps {
   levelUp: () => void;
 }
 
-class Profile extends Component<ProfileProps> {
+interface ProfileState {
+  isButtonDisabled: boolean
+}
+
+class Profile extends Component<ProfileProps, ProfileState> {
+  constructor(props: ProfileProps) {
+    super(props);
+    this.state = { isButtonDisabled: true };
+  }
+
+  componentDidMount() {
+    const config = { attributes: true };
+    const button = window.document.getElementById("first-level-button");
+    if (button) {
+      const observer = new MutationObserver(() => {
+        const button = window.document.getElementById("first-level-button");
+        if (button) {
+          const disableAttribute = button.getAttribute("data-disable-the-button");
+          this.setState({ isButtonDisabled: disableAttribute ? disableAttribute === "true" : false })
+        }
+      });
+      // Start observing the target node for configured mutations
+      observer.observe(button, config);
+    }
+  }
+
+  levelUp = () => {
+      if (this.state.isButtonDisabled) {
+          return
+      } else {
+          this.props.levelUp();
+      }
+  };
+
   render() {
     return (
       <StyledProfile>
-        <FormattedMessage id="please.change.me" />
-          <button disabled type="button" onClick={this.props.levelUp}>Level up !</button>
+          <button
+              data-disable-the-button
+              type="button"
+              onClick={this.levelUp}
+              id="first-level-button"
+          >
+            Become a trooper !
+          </button>
       </StyledProfile>
     );
   }
