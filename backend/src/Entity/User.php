@@ -18,12 +18,14 @@ class User implements UserInterface
         'level_one' => '55c3ee46d0eebd1ad5392a02cf48830df0ab6901',
         'level_two' => 'a59ca43c08454e124ed252830b811dd63649e62a',
         'level_three' => '370315690cfb42749c656c302369ce14291e1380',
+        'level_four' => 'deba90042e6610e4a87d4d6711f61f774a1808b0',
     ];
 
     public const ROLES_NAMES = [
         'level_one' => 'ROLE_CLONE',
         'level_two' => 'ROLE_TROOPER',
         'level_three' => 'ROLE_SQUAD_LEADER',
+        'level_four' => 'ROLE_CORPORAL',
     ];
 
     /**

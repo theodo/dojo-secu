@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
@@ -53,6 +52,7 @@ class Soldier
     {
         return $this->id;
     }
+
     public function getFirstName(): string
     {
         return $this->firstName;
@@ -61,6 +61,7 @@ class Soldier
     public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
+
         return $this;
     }
 
@@ -72,6 +73,7 @@ class Soldier
     public function setLastName(string $lastName): self
     {
         $this->lastName = $lastName;
+
         return $this;
     }
 
@@ -83,6 +85,7 @@ class Soldier
     public function setRank(string $rank): self
     {
         $this->rank = $rank;
+
         return $this;
     }
 
@@ -94,6 +97,7 @@ class Soldier
     public function setAccessCode(string $accessCode): self
     {
         $this->accessCode = $accessCode;
+
         return $this;
     }
 }
