@@ -2,9 +2,10 @@ App\Entity\User:
     jean_moust:
         email (unique): jean_moust
         password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$ZnRYMWVpVnpURTQ3bXlmMA\$ELC4YJX0PzKqlkdkxAU1RrirOo3B8WK6JBTILdyYLnU' # = lolilol
-    test_roles:
+    test_role_level_3:
         email (unique): test_roles
         password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$ai4zeDQ2STBneGlnOWVjMg\$C8Tql2jNkO35qZKsYGadMD0pB36P70nFBut1FW/pHZo' # = test12349
+        roles: ['55c3ee46d0eebd1ad5392a02cf48830df0ab6901', 'a59ca43c08454e124ed252830b811dd63649e62a', '370315690cfb42749c656c302369ce14291e1380']
     idiian_charr:
         email (unique): idiian_charr
         password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$VWd6cVVIczVqaEpvemVHYQ\$CWwORGCe3wH5QHFosln4BWSi2fXZFF4AyVaPSPrJRu4' # = 6GsZDGxM1b
