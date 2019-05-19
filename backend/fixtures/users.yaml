@@ -5,3 +5,138 @@ App\Entity\User:
     test_roles:
         email (unique): test_roles
         password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$ai4zeDQ2STBneGlnOWVjMg\$C8Tql2jNkO35qZKsYGadMD0pB36P70nFBut1FW/pHZo' # = test12349
+    idiian_charr:
+        email (unique): idiian_charr
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$VWd6cVVIczVqaEpvemVHYQ\$CWwORGCe3wH5QHFosln4BWSi2fXZFF4AyVaPSPrJRu4' # = 6GsZDGxM1b
+    alon_niachei:
+        email (unique): alon_niachei
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$QmxWck44a3F6cDcwVDVHbQ\$qTKiI6witWG71H+imQ4Fyix8m1WQL0RLllPOUi0RkF4' # = k8uCCNGyob
+    aaron_nevran:
+        email (unique): aaron_nevran
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$NDJrOXI5LkRWQWdEMkREcg\$gR54Hs5EIb7B5wGr4pCWevNKJLXg3qhmXKLO66z2FBg' # = A7Cm0tO34r
+    rundo_dulius:
+        email (unique): rundo_dulius
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$YzQ2MC9pTmU5b2FlMHBRUw\$+LmdWc+i1XR3akcwbHW6+SU8QyKgBXePEPE6fD+nX50' # = SGzZO7sthS
+    kruk_logan:
+        email (unique): kruk_logan
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$RXFKUU40a0Q5MnRyQlNaSw\$yiBzMxh7KeVv64pujrrjxSdWoZ9BqMKdQciaGqaMT4Q' # = qb6s2uv3LZ
+    teran_walsh:
+        email (unique): teran_walsh
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$eng1OW82QmN6bFF5cVdmVQ\$ug/445LJNVofc//ZkesNvcVyLUvHhGwQh6c1zpfPCIM' # = k0rsfIBeu4
+    edus_finn:
+        email (unique): edus_finn
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$b1dLVjN1dGNzcTloVUZlQg\$JQ59/SJerZIMU1n24Sy6R4H8DPIEFFbS6+gcjqwBOR4' # = OKts22WeY1
+    yurist_mentel:
+        email (unique): yurist_mentel
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$bmlFaDdzVnZYYXZ1OXJXMg\$c++czt7W8QPAhUW23W9C6rkiQo81kgMAw7ZUfh+g8k4' # = MuUMxnh6Aa
+    hal_brin:
+        email (unique): hal_brin
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$S2RQcndPUUpWcGZyb09QRQ\$lhhVSOBiYkWGmFTs7/B6++nJ1CtAsvvrlvzC/sLLx2E' # = aXTjlE998A
+    bendak_emala:
+        email (unique): bendak_emala
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$LmxRb1M0T0dEUmh2QlRUSA\$VP3ahRYkgCIyNs7G1HylTH3TH3Pz49ofBkdWKKwiHm0' # = qY7JOy1CRs
+    kaidin_kalranoos:
+        email (unique): kaidin_kalranoos
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$Y3pHQ3F4TE9PRDVMTDJNLg\$49XsrJsIus7mqYtvPuqqOW8K37zudamFxUuz2nwmSn8' # = Utb1tAa7rg
+    lando_wran:
+        email (unique): lando_wran
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$enJGaS4vbzVtUnAyWWZhaw\$nFRX7XGVNJn87CaEX8Pc5h45yxhK1+bGOsmDtJMZV4E' # = 6D0tEM6BTL
+    mak_torsin:
+        email (unique): mak_torsin
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$anJlbjhSS0pVUjB6YzIzSQ\$Q32ff4AUpGL7SpTkmYZaZ5eumcslWDgtjkTdaSjduFI' # = cNJz4IRs1g
+    siv_berilen:
+        email (unique): siv_berilen
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$WnhVWXVHMFVGNzQ0QVJ0Uw\$PsnK7ynhOUIq0WjcRKC5S+n1YchihdVbqkwxeN+k9Bg' # = wi4hrKpaMi
+    arnet_onasi:
+        email (unique): arnet_onasi
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$dWpadjhJc1cxbjhrVUpUSg\$76IqH/wUEmU5/SFzMJfBvVify1rySG/dsOlG3Bp3vO8' # = NpBj52Z9Mo
+    sim_keithel:
+        email (unique): sim_keithel
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$LzRIOHVKVVkvUFFpT29JWg\$zcufEckWxWvEEEuB9hqV/hwk/mBVXXX5tMZ9LkVLkMU' # = o7wt5Ee6W5
+    lyle_kirra:
+        email (unique): lyle_kirra
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$NHNHNEJRLmFHc3FlSVNVMA\$tUCG1tMfljTEIOoh4vbnK2g1Z4iAswoe7SyHiQlkNgs' # = etc6ZdbKOa
+    sandel_jaxx:
+        email (unique): sandel_jaxx
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$bW1UMGFDVG5ybUhPazhqLg\$SFENkF7UCXW8kzybvm5llvlFLSxdI8/SuOEhkQUBF5s' # = bKPlW3acQS
+    hor_hendyker:
+        email (unique): hor_hendyker
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$SlpsVjJvVnp1T1lRZDBPUw\$O8yViuY4vQMq8QUCMSwt6vBehDKGuz7HtKmcB0BU/Qs' # = vAozA2NLuY
+    jol_sodervall:
+        email (unique): jol_sodervall
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$amhLWjd4SWQuUWVhMnhvMQ\$zrKUANDi8a5XylKQWBFmW+907sSgGmUEt7U7VIpc99I' # = 2KtHM7vVwn
+    alona_alateen:
+        email (unique): alona_alateen
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$VnpRY0h6S1RxdC9IOEJvRg\$HnPhWXH6x+kRySXVi5q/+00xKtf/aoF2bpK3/BCyx7k' # = siQMba0s3u
+    dorean_windtide:
+        email (unique): dorean_windtide
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$UVFZWTZtck1sQVo0cHhPeA\$F4B1DK5DPZUHmaDf0ebxTjv1VdEjDJ0AQHgfPs1AskQ' # = 3vv9bGJ3Qq
+    fenk_antilles:
+        email (unique): fenk_antilles
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$UTEuTUJONkZSWGZqUm1mYg\$4c4eIlOJgpAFhKOrtrmuklHi6dIG74SfaLom4YJ9aCY' # = SWZNc4ibx9
+    amon_nunes:
+        email (unique): amon_nunes
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$RkVSbEdkMHcyVmZwNnBBVg\$DJXpYs7YzZiAthnHp/3W7Oock0/rjyvomybkUaajqWs' # = K8XhZk5VbP
+    fenn_yavoog:
+        email (unique): fenn_yavoog
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$a2I2cjBvb0JlMVNmSlloRA\$IR8pGXbBo2lp63QdgF/lqPPH+N5m2hr+CWiiAYTzvRA' # = 7GuPQq2EOu
+    glecka_chin:
+        email (unique): glecka_chin
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$Ykt5Z2tKd0loOXhRbC56Mg\$IS+H+O/D99J6M1ELg9Lp8o1dj1TDk1n9E9iF6nq+t98' # = q3vf6bepwh
+    gem_shaia:
+        email (unique): gem_shaia
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$U0tuUmUyLjU1dGpWdFdlbg\$eB7GTUFNSa7C7gf+Jywm6UYdS+dIE5sAX0C0HMk7cGU' # = EeZbKvcDGx
+    vorta_yorcot:
+        email (unique): vorta_yorcot
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$bnlhQ0E2cjAxRVBHVklaTA\$UVOf567obv90ex2h6efN+k/RTDGtJNxgHPVDc1xVEwc' # = Z6533uaZPM
+    drexia_eldin:
+        email (unique): drexia_eldin
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$N3NBY1NVMGFMLlJzcDR5dw\$WU8IwnyrZGkFfs0Nij9X7ICgla3vJmzrC58jLhpieD4' # = 96pDtckgyq
+    kira_madish:
+        email (unique): kira_madish
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$a0VweEVGZ09HV2VKOHNHaw\$3jEVLe5V8MkCaD223ePPkvZpzcV9/zyIZJI1tLOQMO4' # = u5gVzEuj5C
+    daemora_anders:
+        email (unique): daemora_anders
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$WnRMdkdLWFpYOXBlVzkwWg\$4TLitoHAoVhgPMh1KPMp5lDB88njnebkm3STPLZHB10' # = 5ffacPZWh4
+    aurine_hawkes:
+        email (unique): aurine_hawkes
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$ckxjU2hKb2ZVTW0wUmY3eA\$+ciOpLo0YYbnOOvRSUocs8IOUkvMlT9sqgumqjh+GVg' # = HCJBGnMpfg
+    skye_jansen:
+        email (unique): skye_jansen
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$YkhvY2oxL3o4TDNYZGcwQg\$+H4STKac9FrODjgvt2ruvja1CSxmudnYcZY8Al+3uVc' # = Zj8rNudKjt
+    viqi_lekit:
+        email (unique): viqi_lekit
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$SS4vc3UzelBEZGJDNkxMbA\$izBODRLiPiSYvAUwUN38YHfsQcRTUqMNIm31s8tpBWE' # = Ds6shsmkuM
+    miriam_styles:
+        email (unique): miriam_styles
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$NTVMTnpNZnljQVJJamFZQQ\$4LVkC8xm1Z0JB0kpP+4CnuLd5er7wPbOUHEYSB1JkjU' # = TQdvnVGH8J
+    vergere_pendragon:
+        email (unique): vergere_pendragon
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$NHdnVEpjM1VUcmxZQS9vZQ\$RmjWd/zouxcpFvi8cIiFF1tJuee2uMuATygChGENMpY' # = zK8DKM6yWX
+    duena_angavel:
+        email (unique): duena_angavel
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$d0V5ei9KUVg3QUx2SGZFVQ\$NBIZnOpDS+T7BXhZuIAKnvnMnELBDDNHc+0sIHRLS7w' # = tg6KmNu4Gj
+    cord_leqarna:
+        email (unique): cord_leqarna
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$NG1xZzlMOXVZSDRlTk1wLg\$UCOwMptewjJEOhwspBaAiMM2rLOrT5wWzb2O+evKJj8' # = ygQZwUxUGW
+    skye_tallon:
+        email (unique): skye_tallon
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$aldDRDZHUGpLVTduRjZYWA\$Y/tQZTEajNlfTmhPSmGd7g9IXE6KjxgR0Woidbz1cPM' # = NKqMbasu6j
+    carhla_keel:
+        email (unique): carhla_keel
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$WDZrTGtKMWEvdFVTc0llcg\$dsGdQ+fT0oG2kahVI+ZZYsOWFYOV08HYxpl8sj8RBec' # = yWpFda4t5R
+    randi_lylin:
+        email (unique): randi_lylin
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$QW9nblI1VTUuTDdEZ1RRMQ\$Qw9LyeLzzwh8lqksF+prDErhJd1ctvf9OB40IiWmHYQ' # = ThmJPcJnCK
+    aria_rowan:
+        email (unique): aria_rowan
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$UWpKRXFMNTNxc0tsczFLZA\$0wcBZjTTffoaTp6KIgBfmguqwYED2KdnlLoWpElIa8A' # = JPdZ22SYgH
+    syal_long:
+        email (unique): syal_long
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$NXB2NkRlQzdHRTRvdC93Sw\$3v3CnYfq2b373qpsaEty9DM6HlEGlx5C7Bf2lstX164' # = yGz6QvqZG6
+    kely_syrus:
+        email (unique): kely_syrus
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$QmxxMXAwNHEySS9XMjlLTQ\$Udc+sIJ+9SWxy8PahTq7HRPz8B+X4dHSe54adcr/GEk' # = PwqEQ4wGdX
+    ami_tochiki:
+        email (unique): ami_tochiki
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$S3RsWE5VZHNCTGZpdm0ucg\$0uSNPKsLZTTccXH8d2PRYStNMWRFQBolOVbOBaQ8nBg' # = 6DAcLMAfBk
