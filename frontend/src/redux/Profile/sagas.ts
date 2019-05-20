@@ -8,7 +8,7 @@ import { goToLevelTwo } from './actions';
 export function* goToLevelTwoSaga() {
   const endpoint = `/api/level-one/level-up`;
   try {
-    const response = yield call(makePutRequest, endpoint, {});
+    const response = yield call(makePutRequest, endpoint, {}, {});
     yield put(goToLevelTwo.success(response.body));
   } catch (error) {
     yield put(goToLevelTwo.failure({ errorMessage: error.message }));
