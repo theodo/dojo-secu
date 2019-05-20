@@ -24,7 +24,7 @@ const reducer = (state: ProfileState = initialState, action: AnyAction) => {
       };
     }
     case getType(fetchUserRoles.success):
-      const userRoles: Array<string> | null = typedAction.payload.userRoles;
+      const userRoles: Array<string> | null = typedAction.payload.roles;
       return {
         ...state,
         userRoles: userRoles !== undefined ? userRoles : null,

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
 
 import StyledProfile from './Profile.style';
 
 interface ProfileProps {
   goToLevelTwo: () => void;
+  fetchUserRoles: () => void;
 }
 
 interface ProfileState {
@@ -15,6 +15,7 @@ class Profile extends Component<ProfileProps, ProfileState> {
   constructor(props: ProfileProps) {
     super(props);
     this.state = { isButtonDisabled: true };
+    this.props.fetchUserRoles();
   }
 
   componentDidMount() {

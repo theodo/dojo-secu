@@ -1,5 +1,5 @@
 import { createAsyncAction } from 'typesafe-actions';
-import User from "redux/Profile/types";
+import { ApiUser } from "redux/Profile/types";
 
 export const goToLevelTwo = createAsyncAction(
     'Profile/GO_TO_LEVEL_TWO_REQUEST',
@@ -25,7 +25,7 @@ export const fetchUserRoles = createAsyncAction(
 )<
     null
     ,
-    User,
+    ApiUser,
     {
         errorMessage: string;
     }
