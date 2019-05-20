@@ -1,5 +1,4 @@
 import { createAsyncAction } from 'typesafe-actions';
-import User from './types';
 
 export const levelUp = createAsyncAction(
     'Profile/LEVEL_UP_REQUEST',
