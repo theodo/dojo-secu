@@ -1,10 +1,10 @@
 import { ActionType, getType } from 'typesafe-actions';
 
 import { AnyAction } from 'redux';
-import { levelUp } from './actions';
+import { goToLevelTwo } from './actions';
 import User from './types';
 
-export type ProfileAction = ActionType<typeof levelUp>;
+export type ProfileAction = ActionType<typeof goToLevelTwo>;
 
 export type ProfileState = Readonly<User>;
 
@@ -16,7 +16,7 @@ const reducer = (state: ProfileState = initialState, action: AnyAction) => {
   const typedAction = action as ProfileAction;
 
   switch (typedAction.type) {
-    case getType(levelUp.success):
+    case getType(goToLevelTwo.success):
       const userRoles: Array<string> | null = typedAction.payload;
       return {
         ...state,

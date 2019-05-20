@@ -4,7 +4,7 @@ import { Dispatch } from 'redux';
 import Profile from './Profile';
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    levelUp: () => dispatch({type: 'Profile/LEVEL_UP_REQUEST'}),
+    goToLevelTwo: () => dispatch({type: 'Profile/GO_TO_LEVEL_TWO_REQUEST'}),
 });
 
 export default connect(null, mapDispatchToProps)(

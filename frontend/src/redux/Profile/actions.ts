@@ -1,9 +1,9 @@
 import { createAsyncAction } from 'typesafe-actions';
 
-export const levelUp = createAsyncAction(
-    'Profile/LEVEL_UP_REQUEST',
-    'Profile/LEVEL_UP_SUCCESS',
-    'Profile/LEVEL_UP__FAILURE',
+export const goToLevelTwo = createAsyncAction(
+    'Profile/GO_TO_LEVEL_TWO_REQUEST',
+    'Profile/GO_TO_LEVEL_TWO_SUCCESS',
+    'Profile/GO_TO_LEVEL_TWO__FAILURE',
 )<
     null
     ,
@@ -14,5 +14,5 @@ export const levelUp = createAsyncAction(
     >();
 
 export default {
-  levelUp
+  goToLevelTwo
 };

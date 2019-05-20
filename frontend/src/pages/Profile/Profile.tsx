@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import StyledProfile from './Profile.style';
 
 interface ProfileProps {
-  levelUp: () => void;
+  goToLevelTwo: () => void;
 }
 
 interface ProfileState {
@@ -33,11 +33,11 @@ class Profile extends Component<ProfileProps, ProfileState> {
     }
   }
 
-  levelUp = () => {
+  goToLevelTwo = () => {
       if (this.state.isButtonDisabled) {
           return
       } else {
-          this.props.levelUp();
+          this.props.goToLevelTwo();
       }
   };
 
@@ -47,7 +47,7 @@ class Profile extends Component<ProfileProps, ProfileState> {
           <button
               data-disable-the-button
               type="button"
-              onClick={this.levelUp}
+              onClick={this.goToLevelTwo}
               id="first-level-button"
           >
             Become a trooper !
