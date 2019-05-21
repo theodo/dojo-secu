@@ -11,6 +11,8 @@ import Input from 'components/Input';
 
 import { FormValues } from './service';
 
+import { LoginContainer, FieldContainer } from './Login.form.style'
+
 interface InnerLoginFormProps {
   errors: {
     email?: string;
@@ -29,10 +31,10 @@ const InnerLoginForm: React.FunctionComponent<InjectedFormikProps<InnerLoginForm
   const { errors, touched, isSubmitting, token } = props;
 
   return (
-    <Fragment>
+    <LoginContainer>
       {token && <Redirect to='/profile' />}
       <Form>
-        <div>
+        <FieldContainer>
           <Field
             type="text"
             name="email"
@@ -40,8 +42,8 @@ const InnerLoginForm: React.FunctionComponent<InjectedFormikProps<InnerLoginForm
             component={Input}
             error={touched.email && errors.email}
           />
-        </div>
-        <div>
+        </FieldContainer>
+        <FieldContainer>
           <Field
             type="password"
             name="password"
@@ -49,7 +51,7 @@ const InnerLoginForm: React.FunctionComponent<InjectedFormikProps<InnerLoginForm
             component={Input}
             error={touched.password && errors.password}
           />
-        </div>
+        </FieldContainer>
         <Button
           type="submit"
           color="primary"
@@ -60,7 +62,7 @@ const InnerLoginForm: React.FunctionComponent<InjectedFormikProps<InnerLoginForm
           Connect
         </Button>
       </Form>
-    </Fragment>
+    </LoginContainer>
   );
 };
 

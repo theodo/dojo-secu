@@ -1,12 +1,15 @@
 import styled from 'styled-components';
+import { colorUsage} from "stylesheet";
 
-export const MessageContainer = styled.div`
+export const LoginContainer = styled.div`
     display: flex;
+    height: 100%;
     flex-direction: column;
     align-items: center;
+    background-color: ${colorUsage.headerBackground}
 `;
 
-MessageContainer.displayName = 'MessageContainer';
+LoginContainer.displayName = 'LoginContainer';
 
 export const Token = styled.pre`
     max-width: 400px;
@@ -15,3 +18,9 @@ export const Token = styled.pre`
 `;
 
 Token.displayName = 'Token';
+
+export const FieldContainer = styled.pre`
+    color: white;
+`;
+
+FieldContainer.displayName = 'FieldContainer';
