@@ -54,17 +54,31 @@ class Profile extends Component<ProfileProps, ProfileState> {
               return 'level_three';
           } else if (userRoles.includes('a59ca43c08454e124ed252830b811dd63649e62a')) {
               return 'level_two';
+          } else {
+              return 'level_one';
           }
       } else {
-          return 'level_one';
+          return null;
       }
   };
 
   render() {
+    let levelPage = <div />;
+
+    switch (this.getRoleFromUserRoles()) {
+      case 'level_two':
+        levelPage = <Level2 />;
+        break;
+      case 'level_one':
+        levelPage = <Level1 goToLevelTwo={this.goToLevelTwo}/>;
+        break;
+      default:
+        break;
+    }
+
     return (
       <StyledProfile>
-        <Level1 goToLevelTwo={this.goToLevelTwo} />
-        <Level2 />
+          {levelPage}
       </StyledProfile>
     );
   }
