@@ -1,10 +1,10 @@
 import { ActionType, getType } from 'typesafe-actions';
 
 import { AnyAction } from 'redux';
-import {fetchUserRoles, goToLevelTwo} from './actions';
+import {fetchUserRoles, goToLevelTwo, goToLevelFour} from './actions';
 import User from './types';
 
-export type ProfileAction = ActionType<typeof goToLevelTwo | typeof fetchUserRoles>;
+export type ProfileAction = ActionType<typeof goToLevelFour | typeof goToLevelTwo | typeof fetchUserRoles>;
 
 export type ProfileState = Readonly<User>;
 
@@ -16,6 +16,13 @@ const reducer = (state: ProfileState = initialState, action: AnyAction) => {
   const typedAction = action as ProfileAction;
 
   switch (typedAction.type) {
+    case getType(goToLevelFour.success): {
+      const userRoles: Array<string> | null = typedAction.payload;
+      return {
+        ...state,
+        userRoles: userRoles !== undefined ? userRoles : null,
+      };
+    }
     case getType(goToLevelTwo.success): {
       const userRoles: Array<string> | null = typedAction.payload;
       return {
