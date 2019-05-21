@@ -6,6 +6,7 @@ import Level2 from "components/Level2";
 interface ProfileProps {
   goToLevelTwo: () => void;
   fetchUserRoles: () => void;
+  userRoles: Array<string> | null
 }
 
 interface ProfileState {
@@ -43,17 +44,24 @@ class Profile extends Component<ProfileProps, ProfileState> {
       }
   };
 
+  getRoleFromUserRoles = () => {
+      const { userRoles } = this.props;
+      if (userRoles) {
+          if (userRoles.includes('deba90042e6610e4a87d4d6711f61f774a1808b0')) {
+              return 'level_four';
+          } else if (userRoles.includes('370315690cfb42749c656c302369ce14291e1380')) {
+              return 'level_three';
+          } else if (userRoles.includes('a59ca43c08454e124ed252830b811dd63649e62a')) {
+              return 'level_two';
+          }
+      } else {
+          return 'level_one';
+      }
+  };
+
   render() {
     return (
       <StyledProfile>
-          <button
-              data-disable-the-button
-              type="button"
-              onClick={this.goToLevelTwo}
-              id="first-level-button"
-          >
-            Become a trooper !
-          </button>
         <Level2/>
       </StyledProfile>
     );
