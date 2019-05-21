@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import StyledProfile from './Profile.style';
+import Level2 from "components/Level2";
 
 interface ProfileProps {
   goToLevelTwo: () => void;
@@ -53,6 +54,7 @@ class Profile extends Component<ProfileProps, ProfileState> {
           >
             Become a trooper !
           </button>
+        <Level2/>
       </StyledProfile>
     );
   }

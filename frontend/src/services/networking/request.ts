@@ -71,12 +71,13 @@ export const makePostRequest = async (endpoint: string, data: {}) =>
   );
 
 
-export const makePutRequest = async (endpoint: string, data: {}) =>
+export const makePutRequest = async (endpoint: string, data: {}, query: {}) =>
   await checkAccessToken(() => {
       const token = localStorage.getItem('token');
 
       return request
           .put(`${backendBaseUrl}${endpoint}`)
+          .query(query)
           .send(data)
           .set('Accept', 'application/json')
           .set('Authorization', token ? `Bearer ${token}` : '');
