@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import StyledProfile from './Profile.style';
 import Level2 from "components/Level2";
+import Level1 from "components/Level1";
 
 interface ProfileProps {
   goToLevelTwo: () => void;
@@ -62,7 +63,8 @@ class Profile extends Component<ProfileProps, ProfileState> {
   render() {
     return (
       <StyledProfile>
-        <Level2/>
+        <Level1 goToLevelTwo={this.goToLevelTwo} />
+        <Level2 />
       </StyledProfile>
     );
   }
