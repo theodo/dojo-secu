@@ -7,32 +7,32 @@ App\Entity\Soldier:
     corporal_2:
         firstName: 'Taia'
         lastName: 'Prost'
-        accessCode: 'theEmpireWillWin'
+        accessCode: 'xoemElaEkcmePa'
         rank: 'corporal'
     corporal_3:
         firstName: 'Dagos'
         lastName: 'Baralein'
-        accessCode: 'theEmpireWillWin'
+        accessCode: 'thisismyaccesscode'
         rank: 'corporal'
     corporal_4:
         firstName: 'Firmus'
         lastName: 'Kast'
-        accessCode: 'theEmpireWillWin'
+        accessCode: 'FirMuskasT'
         rank: 'corporal'
     corporal_5:
         firstName: 'Maverik'
         lastName: 'Auqom'
-        accessCode: 'theEmpireWillWin'
+        accessCode: 'ihavenoidea'
         rank: 'corporal'
     corporal_6:
         firstName: 'Mikal'
         lastName: 'Terrix'
-        accessCode: 'theEmpireWillWin'
+        accessCode: 'aTzScFeAdGmSpE'
         rank: 'corporal'
     corporal_7:
         firstName: 'Surror'
         lastName: 'Hyde'
-        accessCode: 'theEmpireWillWin'
+        accessCode: 'iWantToGoHome'
         rank: 'corporal'
     commander_1:
         firstName: 'Akela'
