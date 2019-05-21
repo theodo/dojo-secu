@@ -13,8 +13,8 @@ const MEASUREMENT_UNIT = 'px';
  */
 const colorPalette = {
   greyDark: '#222',
-  amberLight: '#FFD54F',
-  amber: '#FFC107',
+  white: '#FFFFFF',
+  greyLight: '#AAAAAA',
   amberDark: '#FF8F00',
 };
 
@@ -26,9 +26,9 @@ const colorPalette = {
 export const colorUsage = {
   headerBackground: colorPalette.greyDark,
   primaryTextColor: colorPalette.greyDark,
-  primaryLight: colorPalette.amberLight,
-  primary: colorPalette.amber,
-  primaryDark: colorPalette.amberDark,
+  primaryLight: colorPalette.white,
+  primary: colorPalette.white,
+  primaryDark: colorPalette.greyLight,
 };
 
 export const fontFamily = {
