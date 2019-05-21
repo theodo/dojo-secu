@@ -21,30 +21,6 @@ class Profile extends Component<ProfileProps, ProfileState> {
     this.props.fetchUserRoles();
   }
 
-  componentDidMount() {
-    const config = { attributes: true };
-    const button = window.document.getElementById("first-level-button");
-    if (button) {
-      const observer = new MutationObserver(() => {
-        const button = window.document.getElementById("first-level-button");
-        if (button) {
-          const disableAttribute = button.getAttribute("data-disable-the-button");
-          this.setState({ isButtonDisabled: disableAttribute ? disableAttribute === "true" : false })
-        }
-      });
-      // Start observing the target node for configured mutations
-      observer.observe(button, config);
-    }
-  }
-
-  goToLevelTwo = () => {
-      if (this.state.isButtonDisabled) {
-          return
-      } else {
-          this.props.goToLevelTwo();
-      }
-  };
-
   getRoleFromUserRoles = () => {
       const { userRoles } = this.props;
       if (userRoles) {
@@ -70,7 +46,7 @@ class Profile extends Component<ProfileProps, ProfileState> {
         levelPage = <Level2 />;
         break;
       case 'level_one':
-        levelPage = <Level1 goToLevelTwo={this.goToLevelTwo}/>;
+        levelPage = <Level1 goToLevelTwo={this.props.goToLevelTwo}/>;
         break;
       default:
         break;
