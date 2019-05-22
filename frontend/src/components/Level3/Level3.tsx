@@ -31,7 +31,7 @@ class Level3 extends Component<Level3Props, Level3State> {
     let corporals: any = [];
 
     this.state.corporals && this.state.corporals.forEach((element: any) => 
-    corporals.push(<li>{`${element['firstName']} ${element['lastName']}`}</li>)
+    corporals.push(<li>{`${element['first_name']} ${element['last_name']}`}</li>)
     )
 
     return <ul>{corporals}</ul>
