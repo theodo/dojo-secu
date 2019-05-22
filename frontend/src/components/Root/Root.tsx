@@ -1,5 +1,5 @@
 import Typography from '@material-ui/core/Typography';
-import React, { ReactNode } from 'react';
+import React, { Component, ReactNode } from 'react';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import fr from 'react-intl/locale-data/fr';
@@ -24,20 +24,24 @@ interface Props {
   children: ReactNode;
 }
 
-const Root: React.FunctionComponent<Props> = ({ children }) => (
-  <IntlProvider locale="fr" messages={locales.fr}>
-    <MainContainer>
-      <Header>
-        <Logo src={logo} alt="logo" />
-        <Typography variant="h2" color="inherit">
-          Welcome
-        </Typography>
-        <LogoutButton />
-        <Logo src={deathstar} alt="deathstar" />
-      </Header>
-      {children}
-    </MainContainer>
-  </IntlProvider>
-);
+class Root extends Component<Props> {
+
+    render () {
+       return <IntlProvider locale="fr" messages={locales.fr}>
+            <MainContainer>
+                <Header>
+                    <Logo src={logo} alt="logo" />
+                    <Typography variant="h2" color="inherit">
+                        Welcome
+                    </Typography>
+                    <LogoutButton />
+                    <Logo src={deathstar} alt="deathstar" />
+                </Header>
+                {this.props.children}
+            </MainContainer>
+        </IntlProvider>
+    }
+}
+
 
 export default Root;
