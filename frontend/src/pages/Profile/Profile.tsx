@@ -30,6 +30,9 @@ class Profile extends Component<ProfileProps, ProfileState> {
     let levelPage = <div />;
 
     switch (getRoleFromUserRoles(this.props.userRoles)) {
+      case 'level_six':
+        levelPage = <FinalPage />;
+        break;
       case 'level_three':
         levelPage = <Level3 goToLevelFour={this.props.goToLevelFour}/>;
         break;
