@@ -58,7 +58,7 @@ await checkAccessToken(() => {
       .get(`${backendBaseUrl}${endpoint}`)
       .query(data)
       .set('Accept', 'application/json')
-      .set('Authorization', token ? token : '');
+      .set('Authorization', token ? `Bearer ${token}` : '');
   });
 
 export const makePostRequest = async (endpoint: string, data: {}) =>

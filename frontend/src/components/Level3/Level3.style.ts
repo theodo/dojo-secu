@@ -20,6 +20,7 @@ export const StyledLevel3Button = styled.button`
 export const StyledLevel3Container = styled.div`
   display: flex;
   justify-content: center
+  margin-bottom: 50px
 `;
 
 StyledLevel3Button.displayName = 'StyledLevel3Button';
