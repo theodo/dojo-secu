@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Soldier;
 use App\Repository\SoldierRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,9 +25,13 @@ class ArmySearchController extends AbstractController
     /** @var NormalizerInterface */
     private $normalizer;
 
-    public function __construct(NormalizerInterface $denormalizer)
+    /** @var EntityManagerInterface */
+    private $em;
+
+    public function __construct(NormalizerInterface $denormalizer, EntityManagerInterface $em)
     {
         $this->normalizer = $denormalizer;
+        $this->em = $em;
     }
 
     /**
@@ -42,10 +47,17 @@ class ArmySearchController extends AbstractController
             }
         }
 
-        /** @var SoldierRepository $repository */
-        $repository = $this->getDoctrine()->getRepository(Soldier::class);
-        $result = $repository->dangerouslySearchByRank($rank);
+        $RAW_QUERY = 'SELECT first_name, last_name, rank FROM army WHERE rank='.$rank.';';
 
-        return new JsonResponse($result);
+        $statement = $this->em->getConnection()->prepare($RAW_QUERY);
+        $statement->execute();
+
+        // other way to do sql injection, the problem is that we couldn't execute
+        // /** @var SoldierRepository $repository */
+        // $repository = $this->getDoctrine()->getRepository(Soldier::class);
+        // $result = $repository->dangerouslySearchByRank($rank);
+
+
+        return new JsonResponse($statement->fetchAll());
     }
 }
