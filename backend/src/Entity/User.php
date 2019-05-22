@@ -19,6 +19,8 @@ class User implements UserInterface
         'level_two' => 'a59ca43c08454e124ed252830b811dd63649e62a',
         'level_three' => '370315690cfb42749c656c302369ce14291e1380',
         'level_four' => 'deba90042e6610e4a87d4d6711f61f774a1808b0',
+        'level_five' => '4c84cdeab3c6f801550e5d7a69dad9589807cdca',
+        'level_six' => 'dc3fb2d8fd87034775d6e7e4026e59c199cf63d7',
     ];
 
     public const ROLES_NAMES = [
@@ -26,6 +28,8 @@ class User implements UserInterface
         'level_two' => 'ROLE_TROOPER',
         'level_three' => 'ROLE_SQUAD_LEADER',
         'level_four' => 'ROLE_CORPORAL',
+        'level_five' => 'ROLE_COMMANDER',
+        'level_six' => 'ROLE_SUPREME_LEADER',
     ];
 
     /**
