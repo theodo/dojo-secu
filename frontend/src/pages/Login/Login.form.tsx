@@ -30,7 +30,7 @@ const InnerLoginForm: React.FunctionComponent<InjectedFormikProps<InnerLoginForm
 
   return (
     <Fragment>
-      {token && <Redirect to='/profile' />}
+      {token && <Redirect to='/' />}
       <Form>
         <div>
           <Field

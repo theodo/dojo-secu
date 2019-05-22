@@ -1,7 +1,6 @@
 import jwt_decode from 'jwt-decode';
 import request from 'superagent';
 
-const baseUrl = 'https://api.github.com';
 const backendBaseUrl = process.env.REACT_APP_API_BASE_URL || '';
 
 interface AccessToken {
@@ -56,16 +55,16 @@ await checkAccessToken(() => {
     }
 
     return request
-      .get(`${baseUrl}${endpoint}`)
+      .get(`${backendBaseUrl}${endpoint}`)
       .query(data)
       .set('Accept', 'application/json')
-      .set('Authorization', token ? token : '');
+      .set('Authorization', token ? `Bearer ${token}` : '');
   });
 
 export const makePostRequest = async (endpoint: string, data: {}) =>
   await checkAccessToken(() =>
     request
-      .post(`${baseUrl}${endpoint}`)
+      .post(`${backendBaseUrl}${endpoint}`)
       .send(data)
       .set('Accept', 'application/json'),
   );
