@@ -4,6 +4,8 @@ import StyledProfile from './Profile.style';
 import Level3 from "components/Level3";
 import Level2 from "components/Level2";
 import Level1 from "components/Level1";
+import FinalPage from "components/FinalPage";
+
 import getRoleFromUserRoles from "../../services/levelMapper";
 
 interface ProfileProps {
@@ -28,6 +30,9 @@ class Profile extends Component<ProfileProps, ProfileState> {
     let levelPage = <div />;
 
     switch (getRoleFromUserRoles(this.props.userRoles)) {
+      case 'level_six':
+        levelPage = <FinalPage />;
+        break;
       case 'level_three':
         levelPage = <Level3 goToLevelFour={this.props.goToLevelFour}/>;
         break;
