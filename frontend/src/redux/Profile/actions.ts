@@ -1,6 +1,19 @@
 import { createAsyncAction } from 'typesafe-actions';
 import { ApiUser } from "redux/Profile/types";
 
+export const goToLevelFive = createAsyncAction(
+    'Profile/GO_TO_LEVEL_FIVE_REQUEST',
+    'Profile/GO_TO_LEVEL_FIVE_SUCCESS',
+    'Profile/GO_TO_LEVEL_FIVE__FAILURE',
+)<
+    null
+    ,
+    Array<string> | null,
+    {
+        errorMessage: string;
+    }
+    >();
+
 export const goToLevelFour = createAsyncAction(
     'Profile/GO_TO_LEVEL_FOUR_REQUEST',
     'Profile/GO_TO_LEVEL_FOUR_SUCCESS',
