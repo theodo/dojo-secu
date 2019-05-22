@@ -9,9 +9,9 @@ export function* goToLevelFourSaga(action: any) {
   const endpoint = `/api/level-three/level-up`;
   try {
     const response = yield call(makePutRequest, endpoint, {access_code: action.payload}, {});
-    yield put(goToLevelTwo.success(response.body));
+    yield put(goToLevelFour.success(response.body));
   } catch (error) {
-    yield put(goToLevelTwo.failure({ errorMessage: error.message }));
+    yield put(goToLevelFour.failure({ errorMessage: error.message }));
   }
 }
 

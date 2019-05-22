@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { makeGetRequest } from 'services/networking/request';
 
-import { StyledLevel3Container, StyledLevel3Button } from './Level3.style';
+import { StyledLevel3Container, StyledLevel3Button, StyledLevel3Input } from './Level3.style';
 
 interface Level3Props {
   goToLevelFour: (accessCode: string) => void;
@@ -52,7 +52,7 @@ class Level3 extends Component<Level3Props, Level3State> {
   render() {
     return (
       <Fragment>
-        <input value={this.state.accessCode} onChange={this.handleChange}/>
+        <StyledLevel3Input placeholder='Enter your access code' value={this.state.accessCode} onChange={this.handleChange}/>
         <StyledLevel3Container>
           <StyledLevel3Button
               data-disable-the-button
@@ -60,7 +60,7 @@ class Level3 extends Component<Level3Props, Level3State> {
               onClick={this.goToLevelFour}
               id="first-level-button"
           >
-              Enter the corporal zone :
+              Access the corporal zone
           </StyledLevel3Button>
         </StyledLevel3Container>
 
