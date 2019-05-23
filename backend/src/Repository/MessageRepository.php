@@ -35,6 +35,22 @@ class MessageRepository extends ServiceEntityRepository
         ;
     }
 
+     /**
+      * @return Message[] Returns an array of Message objects
+      */
+    public function findByChat($chatId)
+    {
+        return $this->createQueryBuilder('message')
+            ->leftJoin('message.chat', 'chat')
+            ->leftJoin('message.author', 'author')
+            ->select('author.email, message.text, message.createdAt')
+            ->andWhere('chat.id = :chatId')
+            ->setParameter('chatId', $chatId)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     /*
     public function findOneBySomeField($value): ?Message
     {

@@ -33,6 +33,25 @@ class LevelFiveController extends AbstractController
     }
 
     /**
+     * @Route("/api/chat/{id}", methods={"GET"})
+     */
+    public function chatAdminAction($id): JsonResponse
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        /** @var User $user */
+        $user = $this->getUser();
+        if (!\in_array(User::ROLES['level_six'], $user->getRoles())) {
+            throw new BadRequestHttpException('You need to be a supreme leader to execute this action');
+        }
+
+        $messagesRepository = $entityManager->getRepository(Message::class);
+        $messages = $messagesRepository->findByChat($id);
+
+        return new JsonResponse($messages);
+    }
+
+    /**
      * @param Request $request
      * @return JsonResponse
      * @throws \Exception
