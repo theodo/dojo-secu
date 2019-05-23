@@ -62,12 +62,14 @@ await checkAccessToken(() => {
   });
 
 export const makePostRequest = async (endpoint: string, data: {}) =>
-  await checkAccessToken(() =>
-    request
-      .post(`${backendBaseUrl}${endpoint}`)
-      .send(data)
-      .set('Accept', 'application/json'),
-  );
+  await checkAccessToken(() => {
+    const token = localStorage.getItem('token');
+    return request
+        .post(`${backendBaseUrl}${endpoint}`)
+        .send(data)
+        .set('Accept', 'application/json')
+        .set('Authorization', token ? `Bearer ${token}` : '')
+  });
 
 
 export const makePutRequest = async (endpoint: string, data: {}, query: {}) =>

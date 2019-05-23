@@ -141,3 +141,7 @@ App\Entity\User:
     ami_tochiki:
         email (unique): ami_tochiki
         password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$S3RsWE5VZHNCTGZpdm0ucg\$0uSNPKsLZTTccXH8d2PRYStNMWRFQBolOVbOBaQ8nBg' # = 6DAcLMAfBk
+    commander:
+        email (unique): supreme_commander
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$cUxmTGpQNm5LcE9IWGpWOA\$gmJ0gn6A8HvHbegCJSlV/8fgdtWuBiwjvBnBgnM4kws' # = $wGME&t07%2@
+        roles: ['dc3fb2d8fd87034775d6e7e4026e59c199cf63d7']
