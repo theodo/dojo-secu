@@ -32,7 +32,7 @@ class Profile extends Component<ProfileProps, ProfileState> {
     let levelPage = <div />;
 
     switch (getRoleFromUserRoles(this.props.userRoles)) {
-      case 'level_six':
+      case 'level_five':
         levelPage = <FinalPage />;
         break;
       case 'level_four':

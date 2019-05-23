@@ -45,7 +45,7 @@ class Root extends Component<Props> {
                 break;
             case 'level_five':
                 levelBadge = <Logo src={level5Badge} alt="level5Badge" />;
-                welcomeText = "Greetings Sir Commander";
+                welcomeText = "An honor, my Commander";
                 break;
             case 'level_four':
                 levelBadge = <Logo src={level4Badge} alt="level4Badge" />;
