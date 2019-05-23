@@ -1,5 +1,6 @@
 import { TextField } from '@material-ui/core';
 import React, { ChangeEvent } from 'react';
+import styled from "styled-components";
 
 interface Props {
   label?: string | null;
@@ -16,19 +17,40 @@ interface Props {
   };
 }
 
-const Input: React.FunctionComponent<Props> = props => {
-  const { error, field, ...otherProps } = props;
+export default styled(props => {
+const { error, field, ...otherProps } = props;
 
-  return (
+return (
     <TextField
-      variant="outlined"
-      margin="normal"
-      error={!!error}
-      helperText={error || null}
-      {...field}
-      {...otherProps}
+        variant="outlined"
+        margin="normal"
+        error={!!error}
+        helperText={error || null}
+        InputProps={{
+            classes: {
+                notchedOutline: 'outlineStyle',
+                input: 'inputStyle'
+            }
+        }}
+        InputLabelProps={{
+            classes: {
+                root: 'labelStyle',
+                focused: 'labelStyle'
+            }
+        }}
+        {...field}
+        {...otherProps}
     />
-  );
-};
+)})`
+  background-color: #222;
+  && .labelStyle {
+    color: white;
+  }
+  &&&&&& .outlineStyle {
+    border-color: white;
+  }
 
-export default Input;
+  & .inputStyle {
+    color: white;
+  }
+`;
