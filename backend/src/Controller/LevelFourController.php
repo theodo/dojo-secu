@@ -36,11 +36,9 @@ class LevelFourController extends AbstractController
         }
 
         $accessCode = $requestContent['access_code'];
-        $encodedAccessCode = sha1($accessCode);
 
-        $soldiersRepository = $em->getRepository(Soldier::class);
-
-        if (null === $soldiersRepository->findOneBy(['accessCode' => $encodedAccessCode])) {
+        // we check the raw code for now, we need to check the argon 2I hash for better security
+        if ('krypton' !== $accessCode) {
             throw new BadRequestHttpException('The access code that you have entered is not valid.');
         }
 
