@@ -25,7 +25,8 @@ class Level2 extends Component<Level2Props, Level2State> {
       ship: 'Imperator',
       last_mission_place: 'Kashyyyk',
       i_am_squad_leader: false,
-
+      target: 'Arowan',
+      estimated_remaining_time : '274h'
     }
     const request = makePutRequest('/api/level-two/level-up', {}, query);
     request
