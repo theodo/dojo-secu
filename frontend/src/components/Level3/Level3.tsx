@@ -68,8 +68,8 @@ class Level3 extends Component<Level3Props, Level3State> {
           You must have a valid access code to enter the corporal zone. 
           Only these corporals have been granted the codes :
         </h2>
-        <br />
-        {this.displayCorporals()}
+          <br />
+          {this.displayCorporals()}
       </Fragment>
 
     );

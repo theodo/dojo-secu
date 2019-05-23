@@ -5,6 +5,7 @@ import Level4 from "components/Level4";
 import Level3 from "components/Level3";
 import Level2 from "components/Level2";
 import Level1 from "components/Level1";
+import Level5 from "components/Level5";
 import FinalPage from "components/FinalPage";
 
 import getRoleFromUserRoles from "../../services/levelMapper";
@@ -34,6 +35,9 @@ class Profile extends Component<ProfileProps, ProfileState> {
     switch (getRoleFromUserRoles(this.props.userRoles)) {
       case 'level_six':
         levelPage = <FinalPage />;
+        break;
+      case 'level_five':
+        levelPage = <Level5 />;
         break;
       case 'level_four':
         levelPage = <Level4 goToLevelFive={this.props.goToLevelFive}/>;
