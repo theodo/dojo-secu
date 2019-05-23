@@ -30,7 +30,7 @@ class FinalPage extends Component<FinalPageProps> {
                         My supreme leader, you must protect these plans from the vicious rebellion soldiers !<br /><br />
                     </p>
 
-                    <a href="https://tinyurl.com/2fcpre6" className="space-button">Download The Plans Now!</a>
+                    <a href="https://tinyurl.com/y4zwbzyl" className="space-button">Download The Plans Now!</a>
 
                 </div>
             </div>
