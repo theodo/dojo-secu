@@ -37,6 +37,6 @@ App\Entity\Soldier:
     commander_1:
         firstName: 'Akela'
         lastName: 'Brahnx'
-        accessCode: '3b1758e05c68885403e94f87ade6894198302bb5' # = sha1('krypton')
+        accessCode: '\$argon2i\$v=19\$m=1024,t=2,p=2\$WllRM0QzSGxSSFNkaFl2WA\$X4mE1aTcO2+MHTCUK+ZNqyCrr6mNZ4kXQAhMad7tA18' # = argon2i('krypton')
         rank: 'commander'
 

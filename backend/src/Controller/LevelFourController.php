@@ -9,9 +9,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\Argon2iPasswordEncoder;
 
 class LevelFourController extends AbstractController
 {
+    /** @var Argon2iPasswordEncoder */
+    private $encoder;
+
+    public function __construct(Argon2iPasswordEncoder $encoder)
+    {
+        $this->encoder = $encoder;
+    }
+
     /**
      * @Route("/api/level-four/level-up", methods={"PUT"})
      */
@@ -36,12 +45,14 @@ class LevelFourController extends AbstractController
         }
 
         $accessCode = $requestContent['access_code'];
-        $encodedAccessCode = sha1($accessCode);
 
         $soldiersRepository = $em->getRepository(Soldier::class);
 
-        if (null === $soldiersRepository->findOneBy(['accessCode' => $encodedAccessCode])) {
-            throw new BadRequestHttpException('The access code that you have entered is not valid.');
+        /** @var Soldier $commander */
+        $commander = $soldiersRepository->findOneBy(['rank' => 'commander']);
+
+        if(!$this->encoder->isPasswordValid($commander->getAccessCode(), $accessCode, null)) {
+            throw new BadRequestHttpException('The access code you have entered is not valid');
         }
 
         $user->addRole('level_five');
