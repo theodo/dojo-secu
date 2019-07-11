@@ -71,6 +71,16 @@ export const makePostRequest = async (endpoint: string, data: {}) =>
         .set('Authorization', token ? `Bearer ${token}` : '')
   });
 
+export const makeXMLPostRequest = async (endpoint: string, data: string) =>
+  await checkAccessToken(() => {
+    const token = localStorage.getItem('token');
+    return request
+        .post(`${backendBaseUrl}${endpoint}`)
+        .send(data)
+        .set('Accept', 'application/xml')
+        .set('Authorization', token ? `Bearer ${token}` : '')
+  });
+
 
 export const makePutRequest = async (endpoint: string, data: {}, query: {}) =>
   await checkAccessToken(() => {
