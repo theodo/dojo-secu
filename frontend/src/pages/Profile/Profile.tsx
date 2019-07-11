@@ -6,6 +6,7 @@ import Level3 from "components/Level3";
 import Level2 from "components/Level2";
 import Level1 from "components/Level1";
 import Level5 from "components/Level5";
+import Level6 from "components/Level6";
 import FinalPage from "components/FinalPage";
 
 import getRoleFromUserRoles from "../../services/levelMapper";
