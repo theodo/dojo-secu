@@ -29,12 +29,10 @@ class Level6 extends Component<Level6Props, Level6State> {
 
   submit = async () => {
     const data = {
-      root: {
         info: {
           age: this.state.guestAge,
           name: this.state.guestName
         }
-      }
     }
     const xmlData = Builder.create(data).end({pretty: true})
     const response = await  makeXMLPostRequest('/api/send-invite', xmlData)
