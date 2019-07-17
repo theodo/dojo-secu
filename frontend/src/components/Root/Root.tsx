@@ -21,27 +21,31 @@ import level6Badge from './level6.png';
 import { Header, Logo, MainContainer } from './Root.style';
 
 const locales = {
-  fr: flattenMessages(frMessages),
-  en: flattenMessages(enMessages),
+    fr: flattenMessages(frMessages),
+    en: flattenMessages(enMessages),
 };
 
 addLocaleData([...fr, ...en]);
 
 interface Props {
-  children: ReactNode;
-  userRoles: Array<string> | null
+    children: ReactNode;
+    userRoles: Array<string> | null
 }
 
 class Root extends Component<Props> {
 
-    render () {
+    render() {
         let levelBadge = null;
         let welcomeText = "Welcome";
 
         switch (getRoleFromUserRoles(this.props.userRoles)) {
+            case 'level_seven':
+                levelBadge = <Logo src={level7Badge} alt="level7Badge" />;
+                welcomeText = "It is too much honor my supreme leader";
+                break;
             case 'level_six':
                 levelBadge = <Logo src={level6Badge} alt="level6Badge" />;
-                welcomeText = "It is too much honor my supreme leader";
+                welcomeText = "Admiral ! It is an honor";
                 break;
             case 'level_five':
                 levelBadge = <Logo src={level5Badge} alt="level5Badge" />;
