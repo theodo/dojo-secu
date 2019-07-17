@@ -2,80 +2,48 @@
 
 namespace App\Controller;
 
-use App\Entity\Chat;
-use App\Entity\Message;
+use App\Entity\Soldier;
 use App\Entity\User;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class LevelFiveController extends AbstractController
 {
     /**
-     * @Route("/api/chat", methods={"GET"})
+     * @Route("/api/level-five/level-up", methods={"PUT"})
      */
-    public function chatAction(): JsonResponse
+    public function levelUp(Request $request): JsonResponse
     {
-        $entityManager = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
         /** @var User $user */
         $user = $this->getUser();
-        if (!\in_array(User::ROLES['level_five'], $user->getRoles())) {
+        if (\in_array(User::ROLES['level_five'], $user->getRoles())) {
+            throw new BadRequestHttpException('You have already been granted this role');
+        }
+
+        if (!\in_array(User::ROLES['level_four'], $user->getRoles())) {
             throw new BadRequestHttpException('You need to be a commander to execute this action');
         }
 
-        $messagesRepository = $entityManager->getRepository(Message::class);
-        $messages = $messagesRepository->findByUser($user);
+        $requestContent = \json_decode($request->getContent(), 'json');
 
-        return new JsonResponse($messages);
-    }
-
-    /**
-     * @Route("/api/chat/{id}", methods={"GET"})
-     */
-    public function chatAdminAction($id): JsonResponse
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-
-        /** @var User $user */
-        $user = $this->getUser();
-        if (!\in_array(User::ROLES['level_six'], $user->getRoles())) {
-            throw new BadRequestHttpException('You need to be a supreme leader to execute this action');
+        if (!\array_key_exists('access_code', $requestContent)) {
+            throw new BadRequestHttpException('You must provide an access code');
         }
 
-        $messagesRepository = $entityManager->getRepository(Message::class);
-        $messages = $messagesRepository->findByChat($id);
+        $accessCode = $requestContent['access_code'];
 
-        return new JsonResponse($messages);
-    }
+        if('code_provisoire' !== $accessCode) {
+            throw new BadRequestHttpException('The access code you have entered is not valid');
+        }
 
-    /**
-     * @param Request $request
-     * @return JsonResponse
-     * @throws \Exception
-     * @Route("/api/messages", methods={"POST"})
-     *
-     */
-    public function addMessageAction(Request $request)
-    {
-        $requestContent = \json_decode($request->getContent(), 'json');
-        $messageText = $requestContent['text'];
-        $user = $this->getUser();
-        $entityManager = $this->getDoctrine()->getManager();
-        $chatRepository = $entityManager->getRepository(Chat::class);
-        $chat = $chatRepository->findOneBy(['chatUser' => $user]);
+        $user->addRole('level_six');
+        $em->flush();
 
-        $message = new Message();
-        $message->setAuthor($this->getUser());
-        $message->setCreatedAt(new \DateTime());
-        $message->setChat($chat);
-        $message->setText($messageText);
-
-        $entityManager->persist($message);
-        $entityManager->flush();
-
-        return new JsonResponse([], 204);
+        return new JsonResponse($user->getRoles());
     }
 }
