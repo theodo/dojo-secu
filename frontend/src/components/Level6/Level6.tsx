@@ -10,7 +10,7 @@ interface Level6Props {
 
 interface Level6State {
   guestName: string;
-  guestAge: number;
+  guestAge: number | undefined;
   accessCode: string;
 }
 
@@ -18,7 +18,7 @@ class Level6 extends Component<Level6Props, Level6State> {
 
   constructor(props: Level6Props) {
     super(props);
-    this.state = { guestName: '', guestAge: 0, accessCode: '' };
+    this.state = { guestName: '', guestAge: undefined, accessCode: '' };
   }
 
   goToLevelSix = () => {
