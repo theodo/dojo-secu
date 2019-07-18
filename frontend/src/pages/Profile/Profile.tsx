@@ -15,6 +15,7 @@ interface ProfileProps {
   goToLevelTwo: () => void;
   goToLevelFour: (accessCode: string) => void;
   goToLevelFive: (accessCode: string) => void;
+  goToLevelSix: (accessCode: string) => void;
   fetchUserRoles: () => void;
   userRoles: Array<string> | null
 }
@@ -41,13 +42,13 @@ class Profile extends Component<ProfileProps, ProfileState> {
         levelPage = <Level5 />;
         break;
       case 'level_five':
-        levelPage = <Level6 />;
+        levelPage = <Level6 goToLevelSix={this.props.goToLevelSix}/>;
         break;
       case 'level_four':
         levelPage = <Level4 goToLevelFive={this.props.goToLevelFive} />;
         break;
       case 'level_three':
-        levelPage = <Level3 goToLevelFour={this.props.goToLevelFour} />;
+        levelPage = <Level6 goToLevelSix={this.props.goToLevelSix}/>;
         break;
       case 'level_two':
         levelPage = <Level2 />;

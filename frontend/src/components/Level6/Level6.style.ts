@@ -39,6 +39,15 @@ export const StyledLevel6Text = styled.h2`
   margin-bottom: ${getSpacing(5)};
 `
 
+export const StyledLevel6Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+`;
+
+StyledLevel6Container.displayName = 'StyledLevel6Container';
 StyledLevel6Button.displayName = 'StyledLevel6Button';
 StyledLevel6.displayName = 'StyledLevel6';
 StyledLevel6.displayName = 'StyledLevel6';
