@@ -40,7 +40,7 @@ class Root extends Component<Props> {
 
         switch (getRoleFromUserRoles(this.props.userRoles)) {
             case 'level_seven':
-                levelBadge = <Logo src={level7Badge} alt="level7Badge" />;
+                levelBadge = <Logo src={level6Badge} alt="level7Badge" />;
                 welcomeText = "It is too much honor my supreme leader";
                 break;
             case 'level_six':
