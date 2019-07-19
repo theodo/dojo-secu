@@ -21,11 +21,11 @@ class LevelFiveController extends AbstractController
 
         /** @var User $user */
         $user = $this->getUser();
-        if (\in_array(User::ROLES['level_five'], $user->getRoles())) {
+        if (\in_array(User::ROLES['level_six'], $user->getRoles())) {
             throw new BadRequestHttpException('You have already been granted this role');
         }
 
-        if (!\in_array(User::ROLES['level_four'], $user->getRoles())) {
+        if (!\in_array(User::ROLES['level_five'], $user->getRoles())) {
             throw new BadRequestHttpException('You need to be a commander to execute this action');
         }
 

@@ -74,7 +74,7 @@ class Level6 extends Component<Level6Props, Level6State> {
                 onClick={this.goToLevelSix}
                 id="sixth-level-button"
             >
-                Access the commander zone
+                Access the admiral zone
             </StyledLevel6Button>
         </StyledLevel6Container>
       </StyledLevel6>

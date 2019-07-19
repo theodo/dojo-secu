@@ -28,11 +28,11 @@ class SendInviteController extends AbstractController
 
         $xmlContent = (array) $xmlContent;
 
-        if (!\array_key_exists('age', $xmlContent)) {
+        if (!\array_key_exists('age', $xmlContent) || empty($xmlContent['age'])) {
             throw new BadRequestHttpException('You must provide the age of the participant');
         }
 
-        if (!\array_key_exists('name', $xmlContent)) {
+        if (!\array_key_exists('name', $xmlContent) || empty($xmlContent['name'])) {
             throw new BadRequestHttpException('You must provide the name of the participant');
         }
 
