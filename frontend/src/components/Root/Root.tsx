@@ -17,6 +17,7 @@ import level3Badge from './level3.png';
 import level4Badge from './level4.png';
 import level5Badge from './level5.png';
 import level6Badge from './level6.png';
+import level7Badge from './level7.png';
 
 import { Header, Logo, MainContainer } from './Root.style';
 
@@ -40,7 +41,7 @@ class Root extends Component<Props> {
 
         switch (getRoleFromUserRoles(this.props.userRoles)) {
             case 'level_seven':
-                levelBadge = <Logo src={level6Badge} alt="level7Badge" />;
+                levelBadge = <Logo src={level7Badge} alt="level7Badge" />;
                 welcomeText = "It is too much honor my supreme leader";
                 break;
             case 'level_six':
