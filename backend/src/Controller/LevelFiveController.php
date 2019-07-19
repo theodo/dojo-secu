@@ -37,7 +37,7 @@ class LevelFiveController extends AbstractController
 
         $accessCode = $requestContent['access_code'];
 
-        if('code_provisoire' !== $accessCode) {
+        if('bdcead43f9badb283c1534d97dbc99a92a38495c0b09c2dbded181d6a826a69e' !== hash('sha256', $accessCode)) {
             throw new BadRequestHttpException('The access code you have entered is not valid');
         }
 
