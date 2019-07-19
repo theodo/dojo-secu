@@ -48,7 +48,7 @@ class Profile extends Component<ProfileProps, ProfileState> {
         levelPage = <Level4 goToLevelFive={this.props.goToLevelFive} />;
         break;
       case 'level_three':
-        levelPage = <Level6 goToLevelSix={this.props.goToLevelSix}/>;
+        levelPage = <Level3 goToLevelFour={this.props.goToLevelFour} />;
         break;
       case 'level_two':
         levelPage = <Level2 />;
