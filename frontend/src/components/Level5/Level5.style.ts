@@ -10,3 +10,8 @@ export const StyledLevel5Message = styled.div`
   padding: 10px;
   border-radius: 5px;
 `;
+
+export const StyledLevel5Text = styled.div`
+  text-align: center
+  margin-bottom: 20px
+`;
