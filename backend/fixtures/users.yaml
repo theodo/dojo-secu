@@ -7,8 +7,8 @@ App\Entity\User:
         password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$ai4zeDQ2STBneGlnOWVjMg\$C8Tql2jNkO35qZKsYGadMD0pB36P70nFBut1FW/pHZo' # = test12349
         roles: ['55c3ee46d0eebd1ad5392a02cf48830df0ab6901', 'a59ca43c08454e124ed252830b811dd63649e62a', '370315690cfb42749c656c302369ce14291e1380']
     idiian_charr:
-        email (unique): idiian_charr
-        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$VWd6cVVIczVqaEpvemVHYQ\$CWwORGCe3wH5QHFosln4BWSi2fXZFF4AyVaPSPrJRu4' # = 6GsZDGxM1b
+        email (unique): idiian_charr // NE PAS DONNER
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$YmxHOUN2MGw3OUx2T0pjMQ\$ZX3N9JaFemPA8Skv8j/Fl3SYG4SGh39RMJoWOL6SUYA' # = 6GsZDGxM1b
     alon_niachei:
         email (unique): alon_niachei
         password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$QmxWck44a3F6cDcwVDVHbQ\$qTKiI6witWG71H+imQ4Fyix8m1WQL0RLllPOUi0RkF4' # = k8uCCNGyob
@@ -16,8 +16,8 @@ App\Entity\User:
         email (unique): aaron_nevran
         password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$NDJrOXI5LkRWQWdEMkREcg\$gR54Hs5EIb7B5wGr4pCWevNKJLXg3qhmXKLO66z2FBg' # = A7Cm0tO34r
     rundo_dulius:
-        email (unique): rundo_dulius
-        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$YzQ2MC9pTmU5b2FlMHBRUw\$+LmdWc+i1XR3akcwbHW6+SU8QyKgBXePEPE6fD+nX50' # = SGzZO7sthS
+        email (unique): rundo_dulius // NE PAS DONNER
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$MTZMNElaWnk2Ylo2TlFSZw\$hkow854OFEHpbnq7qzAptoDDBWJ0xpS2628hxWV589s' # = SGzZO7sthS
     kruk_logan:
         email (unique): kruk_logan
         password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$RXFKUU40a0Q5MnRyQlNaSw\$yiBzMxh7KeVv64pujrrjxSdWoZ9BqMKdQciaGqaMT4Q' # = qb6s2uv3LZ
@@ -136,8 +136,8 @@ App\Entity\User:
         email (unique): syal_long
         password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$NXB2NkRlQzdHRTRvdC93Sw\$3v3CnYfq2b373qpsaEty9DM6HlEGlx5C7Bf2lstX164' # = yGz6QvqZG6
     kely_syrus:
-        email (unique): kely_syrus
-        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$QmxxMXAwNHEySS9XMjlLTQ\$Udc+sIJ+9SWxy8PahTq7HRPz8B+X4dHSe54adcr/GEk' # = PwqEQ4wGdX
+        email (unique): kely_syrus // NE MARCHE PAS
+        password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$SVU2V3RjanFkQ1EvRGRWZQ\$EU6kb4HfxDL8NNeNaqL3mxxsI9C4s8qhcuZHL/LhPwM' # = PwqEQ4wGdX
     ami_tochiki:
         email (unique): ami_tochiki
         password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$S3RsWE5VZHNCTGZpdm0ucg\$0uSNPKsLZTTccXH8d2PRYStNMWRFQBolOVbOBaQ8nBg' # = 6DAcLMAfBk
