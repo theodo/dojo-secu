@@ -12,13 +12,14 @@ interface Level6State {
   guestName: string;
   guestAge: number | undefined;
   accessCode: string;
+  responseMessage: string | undefined;
 }
 
 class Level6 extends Component<Level6Props, Level6State> {
 
   constructor(props: Level6Props) {
     super(props);
-    this.state = { guestName: '', guestAge: undefined, accessCode: '' };
+    this.state = { guestName: '', guestAge: undefined, accessCode: '',   responseMessage: undefined};
   }
 
   goToLevelSix = () => {
@@ -46,6 +47,9 @@ class Level6 extends Component<Level6Props, Level6State> {
     }
     const xmlData = Builder.create(data).end({pretty: true})
     const response = await  makeXMLPostRequest('/api/send-invite', xmlData)
+    if(200 === response.status) {
+      this.setState({responseMessage: response.body});
+    }
   }
 
   render() {
@@ -64,6 +68,9 @@ class Level6 extends Component<Level6Props, Level6State> {
                 Send
           </StyledLevel6Button>
         </StyledLevel6Container>
+        <StyledLevel6Text>
+            {this.state.responseMessage}
+          </StyledLevel6Text>
         <StyledLevel6Container>
           <StyledLevel6Text>
             Admiral can enter their access code and avoid interrogation about their guests.
