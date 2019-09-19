@@ -53,10 +53,11 @@ class LevelSixController extends AbstractController
 
     /**
      * @param Request $request
+     *
      * @return JsonResponse
+     *
      * @throws \Exception
      * @Route("/api/messages", methods={"POST"})
-     *
      */
     public function addMessageAction(Request $request)
     {

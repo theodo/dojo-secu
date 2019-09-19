@@ -57,7 +57,6 @@ class ArmySearchController extends AbstractController
         // $repository = $this->getDoctrine()->getRepository(Soldier::class);
         // $result = $repository->dangerouslySearchByRank($rank);
 
-
         return new JsonResponse($statement->fetchAll());
     }
 }

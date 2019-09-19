@@ -51,7 +51,7 @@ class LevelFourController extends AbstractController
         /** @var Soldier $commander */
         $commander = $soldiersRepository->findOneBy(['rank' => 'commander']);
 
-        if(!$this->encoder->isPasswordValid($commander->getAccessCode(), $accessCode, null)) {
+        if (!$this->encoder->isPasswordValid($commander->getAccessCode(), $accessCode, null)) {
             throw new BadRequestHttpException('The access code you have entered is not valid');
         }
 

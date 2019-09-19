@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Soldier;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,7 +36,7 @@ class LevelFiveController extends AbstractController
 
         $accessCode = $requestContent['access_code'];
 
-        if('code_provisoire' !== $accessCode) {
+        if ('code_provisoire' !== $accessCode) {
             throw new BadRequestHttpException('The access code you have entered is not valid');
         }
 

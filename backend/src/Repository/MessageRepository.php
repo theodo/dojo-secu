@@ -19,9 +19,9 @@ class MessageRepository extends ServiceEntityRepository
         parent::__construct($registry, Message::class);
     }
 
-     /**
-      * @return Message[] Returns an array of Message objects
-      */
+    /**
+     * @return Message[] Returns an array of Message objects
+     */
     public function findByUser($user)
     {
         return $this->createQueryBuilder('message')
@@ -35,9 +35,9 @@ class MessageRepository extends ServiceEntityRepository
         ;
     }
 
-     /**
-      * @return Message[] Returns an array of Message objects
-      */
+    /**
+     * @return Message[] Returns an array of Message objects
+     */
     public function findByChat($chatId)
     {
         return $this->createQueryBuilder('message')
