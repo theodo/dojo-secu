@@ -14,7 +14,7 @@ class SendInviteController extends AbstractController
     /**
      * @Route("/api/send-invite", methods={"POST"})
      *
-     * @return JsonResponse
+     * @return JsonRespons
      */
     public function sendInvite(Request $request): JsonResponse
     {
@@ -22,7 +22,7 @@ class SendInviteController extends AbstractController
 
         $xmlContent = simplexml_load_string($requestContent, 'SimpleXMLElement', LIBXML_NOENT);
 
-        if(!$xmlContent) {
+        if (!$xmlContent) {
             throw new BadRequestHttpException('Invalid xml');
         }
 
