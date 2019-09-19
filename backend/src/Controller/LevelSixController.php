@@ -61,11 +61,12 @@ class LevelSixController extends AbstractController
      */
     public function addMessageAction(Request $request)
     {
-        $requestContent = \json_decode($request->getContent(), 'json');
+        $requestContent = \json_decode((string) $request->getContent(), true);
         $messageText = $requestContent['text'];
         $user = $this->getUser();
         $entityManager = $this->getDoctrine()->getManager();
         $chatRepository = $entityManager->getRepository(Chat::class);
+        /** @var Chat $chat */
         $chat = $chatRepository->findOneBy(['chatUser' => $user]);
 
         $message = new Message();

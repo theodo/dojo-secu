@@ -38,7 +38,7 @@ class LevelFourController extends AbstractController
             throw new BadRequestHttpException('You need to be a corporal to execute this action');
         }
 
-        $requestContent = \json_decode($request->getContent(), 'json');
+        $requestContent = \json_decode((string) $request->getContent(), true);
 
         if (!\array_key_exists('access_code', $requestContent)) {
             throw new BadRequestHttpException('You must provide an access code');

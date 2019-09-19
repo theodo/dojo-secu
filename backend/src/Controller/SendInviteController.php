@@ -17,6 +17,7 @@ class SendInviteController extends AbstractController
      */
     public function sendInvite(Request $request): JsonResponse
     {
+        /** @var string $requestContent */
         $requestContent = $request->getContent();
 
         $xmlContent = simplexml_load_string($requestContent, 'SimpleXMLElement', LIBXML_NOENT);

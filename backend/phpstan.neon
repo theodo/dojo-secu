@@ -2,3 +2,5 @@ parameters:
     level: max
     excludes_analyse:
         - %currentWorkingDirectory%/src/Migrations/*
+    ignoreErrors:
+        - '#Call to an undefined method Doctrine\\Common\\Persistence\\ObjectRepository::findBy[A-Z][a-zA-Z]*\(\)#'
