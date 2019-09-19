@@ -14,7 +14,7 @@ class SendInviteController extends AbstractController
     /**
      * @Route("/api/send-invite", methods={"POST"})
      *
-     * @return Response
+     * @return JsonResponse
      */
     public function sendInvite(Request $request): JsonResponse
     {
