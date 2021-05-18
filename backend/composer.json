@@ -1,4 +1,6 @@
 {
+    "name": "theodo/security-dojo",
+    "description": "API for the escape room like security dojo where players need to steal Death Star secret plans",
     "type": "project",
     "license": "proprietary",
     "require": {
