@@ -30,6 +30,17 @@ resource "aws_instance" "worker-ec2" {
   subnet_id = aws_subnet.private-subnet.id
   key_name = "aws-dojo-secu"
 
+  user_data = <<EOF
+ 		#! /bin/bash
+        sudo yum install -y docker
+        sudo systemctl enable docker
+        sudo systemctl start docker
+        sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+        sudo yum install -y git
+        (cd /home/ec2-user; git clone https://github.com/theodo/dojo-secu.git)
+ 	EOF
+
   tags = {
     Name: "worker-ec2-security-dojo"
   }

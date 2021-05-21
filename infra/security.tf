@@ -34,6 +34,12 @@ resource "aws_security_group" "sg-worker" {
     security_groups = [aws_security_group.sg-bastion.id]
   }
   ingress {
+    from_port = 80
+    protocol = "tcp"
+    to_port = 80
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
     from_port = -1
     protocol = "icmp"
     to_port = -1
