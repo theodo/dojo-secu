@@ -39,6 +39,11 @@ resource "aws_instance" "worker-ec2" {
         sudo chmod +x /usr/local/bin/docker-compose
         sudo yum install -y git
         (cd /home/ec2-user; git clone https://github.com/theodo/dojo-secu.git)
+
+        private_ip=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
+        replace="s/ec2_private_ip/$private_ip/g"
+        (cd /home/ec2-user/dojo-secu; git checkout setup-alb
+        (cd /home/ec2-user/dojo-secu/backend/config/packages; sed $replace framework.yaml
         (cd /home/ec2-user/dojo-secu; /usr/local/bin/docker-compose up -d)
  	EOF
 
