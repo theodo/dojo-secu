@@ -1,0 +1,44 @@
+
+data "aws_ami" "amazon-linux" {
+  owners = ["amazon"]
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+}
+
+resource "aws_instance" "bastion-ec2" {
+  ami = data.aws_ami.amazon-linux.image_id
+  instance_type = "t2.micro"
+  associate_public_ip_address = true
+  security_groups = [aws_security_group.sg-bastion.id]
+  subnet_id = aws_subnet.public-subnet-bastion.id
+  key_name = "aws-dojo-secu"
+
+  tags = {
+    Name: "bastion-ec2-security-dojo"
+  }
+}
+
+resource "aws_instance" "worker-ec2" {
+  ami = data.aws_ami.amazon-linux.image_id
+  instance_type = "t2.micro"
+  associate_public_ip_address = false
+  security_groups = [aws_security_group.sg-worker.id]
+  subnet_id = aws_subnet.private-subnet.id
+  key_name = "aws-dojo-secu"
+
+  tags = {
+    Name: "worker-ec2-security-dojo"
+  }
+}
+
+output "bastion-public-ip" {
+  value = aws_instance.bastion-ec2.public_ip
+}
+
+output "worker-private-ip" {
+  value = aws_instance.worker-ec2.private_ip
+}
