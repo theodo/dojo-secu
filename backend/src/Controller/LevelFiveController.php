@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Soldier;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,7 +28,7 @@ class LevelFiveController extends AbstractController
             throw new BadRequestHttpException('You need to be a commander to execute this action');
         }
 
-        $requestContent = \json_decode($request->getContent(), 'json');
+        $requestContent = \json_decode((string) $request->getContent(), true);
 
         if (!\array_key_exists('access_code', $requestContent)) {
             throw new BadRequestHttpException('You must provide an access code');
@@ -37,7 +36,7 @@ class LevelFiveController extends AbstractController
 
         $accessCode = $requestContent['access_code'];
 
-        if('code_provisoire' !== $accessCode) {
+        if ('code_provisoire' !== $accessCode) {
             throw new BadRequestHttpException('The access code you have entered is not valid');
         }
 

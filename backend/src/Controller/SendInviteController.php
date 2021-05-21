@@ -5,7 +5,6 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -14,15 +13,16 @@ class SendInviteController extends AbstractController
     /**
      * @Route("/api/send-invite", methods={"POST"})
      *
-     * @return Response
+     * @return JsonResponse
      */
     public function sendInvite(Request $request): JsonResponse
     {
+        /** @var string $requestContent */
         $requestContent = $request->getContent();
 
         $xmlContent = simplexml_load_string($requestContent, 'SimpleXMLElement', LIBXML_NOENT);
 
-        if(!$xmlContent) {
+        if (!$xmlContent) {
             throw new BadRequestHttpException('Invalid xml');
         }
 
