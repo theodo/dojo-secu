@@ -247,6 +247,9 @@
     "php-cs-fixer/diff": {
         "version": "v1.3.0"
     },
+    "php-webdriver/webdriver": {
+        "version": "1.11.0"
+    },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
     },
@@ -383,6 +386,9 @@
             "src/Controller/.gitignore",
             "src/Kernel.php"
         ]
+    },
+    "symfony/http-client": {
+        "version": "v5.2.8"
     },
     "symfony/http-foundation": {
         "version": "v4.2.5"
