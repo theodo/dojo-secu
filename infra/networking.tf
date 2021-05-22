@@ -137,13 +137,6 @@ resource "aws_route_table_association" "private_rt_assoc_1" {
 
 ######################################################################################
 ######################################################################################
-output "bastion_subnet" {
-  value = aws_subnet.public-subnet-bastion.id
-}
-
-output "private_subnet" {
-  value = aws_subnet.private-subnet.id
-}
 
 output "vpc" {
   value = aws_vpc.vpc.id
