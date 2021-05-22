@@ -23,6 +23,8 @@ resource "aws_instance" "bastion-ec2" {
 }
 
 resource "aws_instance" "worker-ec2" {
+  depends_on = [aws_lb.alb]
+
   ami = data.aws_ami.amazon-linux.image_id
   instance_type = "t2.micro"
   associate_public_ip_address = false
@@ -40,10 +42,16 @@ resource "aws_instance" "worker-ec2" {
         sudo yum install -y git
         (cd /home/ec2-user; git clone https://github.com/theodo/dojo-secu.git)
 
+        (cd /home/ec2-user/dojo-secu; git checkout setup-alb)
+
         private_ip=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
-        replace="s/ec2_private_ip/$private_ip/g"
-        (cd /home/ec2-user/dojo-secu; git checkout setup-alb
-        (cd /home/ec2-user/dojo-secu/backend/config/packages; sed $replace framework.yaml
+        replace_cmd="s/ec2_private_ip/$private_ip/g"
+        (cd /home/ec2-user/dojo-secu/backend/config/packages; sed -i $replace_cmd framework.yaml)
+
+        private_alb_dns=${aws_lb.alb.dns_name}
+        replace_cmd="s/alb_private_dns/$private_alb_dns/g"
+        (cd /home/ec2-user/dojo-secu/backend/config/packages; sed -i $replace_cmd framework.yaml)
+
         (cd /home/ec2-user/dojo-secu; /usr/local/bin/docker-compose up -d)
  	EOF
 
