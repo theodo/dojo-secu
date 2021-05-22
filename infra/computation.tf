@@ -9,6 +9,16 @@ data "aws_ami" "amazon-linux" {
   }
 }
 
+data "terraform_remote_state" "s3-web-site" {
+  backend = "s3"
+  config = {
+    bucket = "dojo-secu-terraform-states"
+    key = "frontend"
+    region = "eu-west-2"
+    profile = "dojo-security"
+  }
+}
+
 resource "aws_instance" "bastion-ec2" {
   ami = data.aws_ami.amazon-linux.image_id
   instance_type = "t2.micro"
@@ -51,6 +61,10 @@ resource "aws_instance" "worker-ec2" {
         private_alb_dns=${aws_lb.alb.dns_name}
         replace_cmd="s/alb_private_dns/$private_alb_dns/g"
         (cd /home/ec2-user/dojo-secu/backend/config/packages; sed -i $replace_cmd framework.yaml)
+
+        website_s3_bucket=${data.terraform_remote_state.s3-web-site.outputs.s3-url}
+        replace_cmd="s/s3_bucket_endpoint/$website_s3_bucket/g"
+        (cd /home/ec2-user/dojo-secu/backend/; sed -i $replace_cmd .env)
 
         (cd /home/ec2-user/dojo-secu; /usr/local/bin/docker-compose up -d)
  	EOF
