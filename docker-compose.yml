@@ -29,19 +29,6 @@ services:
     ports:
       - "8000:80"
 
-  cache-proxy:
-    build:
-      context: ./backend
-      target: api_platform_varnish
-    depends_on:
-      - api
-    volumes:
-      - ./backend/docker/varnish/conf:/usr/local/etc/varnish:ro
-    tmpfs:
-      - /usr/local/var/varnish:exec
-    ports:
-      - "8081:80"
-
   db:
     # In production, you may want to use a managed database service
     image: postgres:10.6-alpine
@@ -63,17 +50,6 @@ services:
     - POSTGRES_DB=seed
     - POSTGRES_USER=seed
     - POSTGRES_PASSWORD=Ge0rgesMoustaki
-
-  h2-proxy:
-    # Don't use this proxy in prod
-    build:
-      context: ./h2-proxy
-    depends_on:
-      - api
-      - cache-proxy
-    ports:
-      - "8443:8443"
-      - "8444:8444"
 
 volumes:
   db-data: {}
