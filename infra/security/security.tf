@@ -1,6 +1,20 @@
+provider "aws" {
+  region = "eu-west-2"
+  profile = "dojo-security"
+}
+
+data "terraform_remote_state" "networking" {
+  backend = "s3"
+  config = {
+    bucket = "dojo-secu-terraform-states"
+    key = "networking"
+    region = "eu-west-2"
+    profile = "dojo-security"
+  }
+}
 
 resource "aws_security_group" "sg-bastion" {
-  vpc_id = aws_vpc.vpc.id
+  vpc_id = data.terraform_remote_state.networking.outputs.vpc
   ingress {
     from_port = 22
     protocol = "tcp"
@@ -20,7 +34,7 @@ resource "aws_security_group" "sg-bastion" {
 }
 
 resource "aws_security_group" "sg-alb" {
-  vpc_id = aws_vpc.vpc.id
+  vpc_id = data.terraform_remote_state.networking.outputs.vpc
   ingress {
     from_port = 80
     protocol = "tcp"
@@ -40,7 +54,7 @@ resource "aws_security_group" "sg-alb" {
 }
 
 resource "aws_security_group" "sg-worker" {
-  vpc_id = aws_vpc.vpc.id
+  vpc_id = data.terraform_remote_state.networking.outputs.vpc
   ingress {
     from_port = 22
     protocol = "tcp"
@@ -62,4 +76,16 @@ resource "aws_security_group" "sg-worker" {
   tags = {
     Name: "sg-worker-security-dojo"
   }
+}
+
+output "sg-bastion" {
+  value = aws_security_group.sg-bastion.id
+}
+
+output "sg-worker" {
+  value = aws_security_group.sg-worker.id
+}
+
+output "sg-alb" {
+  value = aws_security_group.sg-alb.id
 }

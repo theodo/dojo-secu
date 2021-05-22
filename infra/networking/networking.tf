@@ -141,3 +141,19 @@ resource "aws_route_table_association" "private_rt_assoc_1" {
 output "vpc" {
   value = aws_vpc.vpc.id
 }
+
+output "bastion-subnet" {
+  value = aws_subnet.public-subnet-bastion.id
+}
+
+output "worker-subnet" {
+  value = aws_subnet.private-subnet.id
+}
+
+output "alb-subnet-1" {
+  value = aws_subnet.public-subnet-alb-1.id
+}
+
+output "alb-subnet-2" {
+  value = aws_subnet.public-subnet-alb-2.id
+}

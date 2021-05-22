@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "eu-west-2"
+  profile = "dojo-security"
+}
 
 data "aws_ami" "amazon-linux" {
   owners = ["amazon"]
@@ -19,27 +23,48 @@ data "terraform_remote_state" "s3-web-site" {
   }
 }
 
-resource "aws_instance" "bastion-ec2" {
-  ami = data.aws_ami.amazon-linux.image_id
-  instance_type = "t2.micro"
-  associate_public_ip_address = true
-  security_groups = [aws_security_group.sg-bastion.id]
-  subnet_id = aws_subnet.public-subnet-bastion.id
-  key_name = "aws-dojo-secu"
-
-  tags = {
-    Name: "bastion-ec2-security-dojo"
+data "terraform_remote_state" "alb" {
+  backend = "s3"
+  config = {
+    bucket = "dojo-secu-terraform-states"
+    key = "alb"
+    region = "eu-west-2"
+    profile = "dojo-security"
   }
 }
 
-resource "aws_instance" "worker-ec2" {
-  depends_on = [aws_lb.alb]
+data "terraform_remote_state" "networking" {
+  backend = "s3"
+  config = {
+    bucket = "dojo-secu-terraform-states"
+    key = "networking"
+    region = "eu-west-2"
+    profile = "dojo-security"
+  }
+}
 
+data "terraform_remote_state" "security" {
+  backend = "s3"
+  config = {
+    bucket = "dojo-secu-terraform-states"
+    key = "security"
+    region = "eu-west-2"
+    profile = "dojo-security"
+  }
+}
+
+resource "aws_lb_target_group_attachment" "target_1" {
+  target_group_arn = data.terraform_remote_state.alb.outputs.target-group-arn
+  target_id        = aws_instance.worker-ec2.id
+  port             = 8000
+}
+
+resource "aws_instance" "worker-ec2" {
   ami = data.aws_ami.amazon-linux.image_id
   instance_type = "t2.micro"
   associate_public_ip_address = false
-  security_groups = [aws_security_group.sg-worker.id]
-  subnet_id = aws_subnet.private-subnet.id
+  security_groups = [data.terraform_remote_state.security.outputs.sg-worker]
+  subnet_id = data.terraform_remote_state.networking.outputs.worker-subnet
   key_name = "aws-dojo-secu"
 
   user_data = <<EOF
@@ -58,7 +83,7 @@ resource "aws_instance" "worker-ec2" {
         replace_cmd="s/ec2_private_ip/$private_ip/g"
         (cd /home/ec2-user/dojo-secu/backend/config/packages; sed -i $replace_cmd framework.yaml)
 
-        private_alb_dns=${aws_lb.alb.dns_name}
+        private_alb_dns=${data.terraform_remote_state.alb.outputs.alb-dns}
         replace_cmd="s/alb_private_dns/$private_alb_dns/g"
         (cd /home/ec2-user/dojo-secu/backend/config/packages; sed -i $replace_cmd framework.yaml)
 
@@ -72,10 +97,6 @@ resource "aws_instance" "worker-ec2" {
   tags = {
     Name: "worker-ec2-security-dojo"
   }
-}
-
-output "bastion-public-ip" {
-  value = aws_instance.bastion-ec2.public_ip
 }
 
 output "worker-private-ip" {

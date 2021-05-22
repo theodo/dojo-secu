@@ -5,12 +5,41 @@
 
 ### Deploy sequence
 #### 1) Deploy the S3 bucket to store frontend
+In `{project}/infra/frontend`:
+- run `terraform init`    (first time only)
+- run `terraform apply -auto-approve` (if you made a change only)
 
-In `{project}/infra/frontend`, run `terraform apply -auto-approve`
+#### 2) Deploy the Infra Networking
+In `{project}/infra/networking`:
+- run `terraform init`    (first time only)
+- run `terraform apply -auto-approve`  (if you made a change only)
 
-#### 2) Deploy the frontend
+#### 3) Deploy the Infra Security Groups
+In `{project}/infra/security`:
+- run `terraform init`    (first time only)
+- run `terraform apply -auto-approve`  (if you made a change only)
 
-In `{project}/frontend`, run `./deploy.sh`
+#### 4) Deploy the ALB
+In `{project}/infra/alb`:
+- run `terraform init`    (first time only)
+- run `terraform apply -auto-approve`  (if you made a change only)
+
+#### 5) Deploy the BASTION JumpBox
+In `{project}/infra/bastion`:
+- run `terraform init`    (first time only)
+- run `terraform apply -auto-approve`  (if you made a change only)
+
+#### 5) Deploy the Backend Worker JumpBox
+In `{project}/infra/worker`:
+- run `terraform init`    (first time only)
+- run `terraform apply -auto-approve`  (if you made a change only)
+  
+⚠️ PHP configuration is changed to allow connections from the ALB
+
+
+#### 6) Deploy the frontend
+In `{project}/frontend`:
+- run `./deploy.sh`
 
 This sequence changes the `.env.production` to target the ALB as API. Then the frontend is built and deployed inside the S3.
 
@@ -18,10 +47,8 @@ This sequence changes the `.env.production` to target the ALB as API. Then the f
 
 ⚠️: deploy.sh must be executable (`chmod +x deploy.sh` may be required)
 
-#### 3) Deploy the backend
-In `{project}/infra`, run `terraform apply -auto-approve`
 
-This sequence creates the whole Infra (networks, security, EC2s and ALB). 
-
-PHP configuration is changed to allow connections from the ALB
+### DESTROY FULL STACK sequence
+In `{project}/infra`:
+- ./destroy-all-stack.sh
 

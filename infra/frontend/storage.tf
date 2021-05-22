@@ -13,6 +13,27 @@ resource "aws_s3_bucket" "frontend-dojo-security-theodo" {
   }
 }
 
+resource "aws_s3_bucket_policy" "frontend-s3-policy" {
+  bucket = "frontend-dojo-security-theodo"
+
+  policy = jsonencode({
+      Version = "2012-10-17"
+      Id      = "frontend-s3-policy"
+      Statement = [
+        {
+          Sid       = "PublicRead"
+          Effect    = "Allow"
+          Principal = "*"
+          Action    = ["s3:GetObject","s3:GetObjectVersion"]
+          Resource = [
+            aws_s3_bucket.frontend-dojo-security-theodo.arn,
+            "${aws_s3_bucket.frontend-dojo-security-theodo.arn}/*",
+          ]
+        },
+      ]
+    })
+}
+
 output "s3-url" {
   value = aws_s3_bucket.frontend-dojo-security-theodo.website_endpoint
 }
