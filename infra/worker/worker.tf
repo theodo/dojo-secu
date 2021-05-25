@@ -69,15 +69,20 @@ resource "aws_instance" "worker-ec2" {
 
   user_data = <<EOF
  		#! /bin/bash
-        sudo yum install -y docker
-        sudo systemctl enable docker
-        sudo systemctl start docker
-        sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
-        sudo chmod +x /usr/local/bin/docker-compose
         sudo yum install -y git
+
+        sudo amazon-linux-extras disable php7.4
+        sudo amazon-linux-extras disable php7.3
+        sudo amazon-linux-extras enable php7.2
+        sudo yum -y install php php-{pear,cgi,common,curl,mbstring,gd,mysqlnd,gettext,bcmath,json,xml,fpm,intl,zip,imap}
+
+        sudo curl -sS https://getcomposer.org/installer | sudo php
+        sudo mv composer.phar /usr/local/bin/composer
+        sudo ln -s /usr/local/bin/composer /usr/bin/composer
+
         (cd /home/ec2-user; git clone https://github.com/theodo/dojo-secu.git)
 
-        (cd /home/ec2-user/dojo-secu; git checkout setup-alb)
+        (cd /home/ec2-user/dojo-secu; git checkout version-sans-docker)
 
         private_ip=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
         replace_cmd="s/ec2_private_ip/$private_ip/g"
@@ -91,7 +96,6 @@ resource "aws_instance" "worker-ec2" {
         replace_cmd="s/s3_bucket_endpoint/$website_s3_bucket/g"
         (cd /home/ec2-user/dojo-secu/backend/; sed -i $replace_cmd .env)
 
-        (cd /home/ec2-user/dojo-secu; /usr/local/bin/docker-compose up -d)
  	EOF
 
   tags = {
