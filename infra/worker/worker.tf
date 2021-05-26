@@ -13,7 +13,7 @@ data "aws_ami" "amazon-linux" {
   }
 }
 
-data "terraform_remote_state" "s3-web-site" {
+data "terraform_remote_state" "s3-website" {
   backend = "s3"
   config = {
     bucket = "dojo-secu-terraform-states"
@@ -77,17 +77,17 @@ resource "aws_instance" "worker-ec2" {
         sudo yum install -y git
         (cd /home/ec2-user; git clone https://github.com/theodo/dojo-secu.git)
 
-        (cd /home/ec2-user/dojo-secu; git checkout setup-alb)
+        (cd /home/ec2-user/dojo-secu; git checkout refacto-infra)
 
         private_ip=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
         replace_cmd="s/ec2_private_ip/$private_ip/g"
-        (cd /home/ec2-user/dojo-secu/backend/config/packages; sed -i $replace_cmd framework.yaml)
+        (cd /home/ec2-user/dojo-secu/backend; sed -i $replace_cmd .env)
 
         private_alb_dns=${data.terraform_remote_state.alb.outputs.alb-dns}
         replace_cmd="s/alb_private_dns/$private_alb_dns/g"
-        (cd /home/ec2-user/dojo-secu/backend/config/packages; sed -i $replace_cmd framework.yaml)
+        (cd /home/ec2-user/dojo-secu/backend; sed -i $replace_cmd .env)
 
-        website_s3_bucket=${data.terraform_remote_state.s3-web-site.outputs.s3-url}
+        website_s3_bucket=${data.terraform_remote_state.s3-website.outputs.s3-url}
         replace_cmd="s/s3_bucket_endpoint/$website_s3_bucket/g"
         (cd /home/ec2-user/dojo-secu/backend/; sed -i $replace_cmd .env)
 

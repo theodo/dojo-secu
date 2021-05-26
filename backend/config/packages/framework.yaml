@@ -1,5 +1,5 @@
 framework:
-    trusted_hosts: ['localhost', 'ec2_private_ip', 'alb_private_dns']
+    trusted_hosts: ['localhost', '%env(SERVER_PRIVATE_IP)%', '%env(ALB_DNS)%']
     secret: '%env(APP_SECRET)%'
     #default_locale: en
     #csrf_protection: ~
