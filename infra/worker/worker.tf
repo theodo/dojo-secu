@@ -76,8 +76,9 @@ resource "aws_instance" "worker-ec2" {
         sudo chmod +x /usr/local/bin/docker-compose
         sudo yum install -y git
         (cd /home/ec2-user; git clone https://github.com/theodo/dojo-secu.git)
-
         (cd /home/ec2-user/dojo-secu; git checkout master)
+
+        sudo amazon-linux-extras install -y postgresql10
 
         private_ip=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
         replace_cmd="s/ec2_private_ip/$private_ip/g"
