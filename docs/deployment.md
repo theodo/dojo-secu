@@ -47,6 +47,13 @@ This sequence changes the `.env.production` to target the ALB as API. Then the f
 
 ⚠️: deploy.sh must be executable (`chmod +x deploy.sh` may be required)
 
+#### 7) Deploy the frontend
+If Domain Name CNAME has not been mapped yet:
+
+```gandi record create theo.do --name deathstar.dojo --ttl 600 --type CNAME --value deathstar.dojo.theo.do.s3-website.eu-west-2.amazonaws.com.```
+
+DO NOT FORGET THE '.' at the end.
+
 
 ### DESTROY FULL STACK sequence
 In `{project}/infra`:

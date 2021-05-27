@@ -7,6 +7,6 @@ sed -i '' -e $cmd .env.production
 ## REBUILD frontend
 yarn build
 ## DEPLOY in S3
-aws s3 sync build/ s3://frontend-dojo-security-theodo --profile dojo-security
+aws s3 sync build/ s3://deathstar.dojo.theo.do --profile dojo-security
 ## Rollback change in .env.production
 git checkout HEAD .env.production

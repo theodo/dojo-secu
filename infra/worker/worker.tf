@@ -13,16 +13,6 @@ data "aws_ami" "amazon-linux" {
   }
 }
 
-data "terraform_remote_state" "s3-website" {
-  backend = "s3"
-  config = {
-    bucket = "dojo-secu-terraform-states"
-    key = "frontend"
-    region = "eu-west-2"
-    profile = "dojo-security"
-  }
-}
-
 data "terraform_remote_state" "alb" {
   backend = "s3"
   config = {
@@ -76,7 +66,7 @@ resource "aws_instance" "worker-ec2" {
         sudo chmod +x /usr/local/bin/docker-compose
         sudo yum install -y git
         (cd /home/ec2-user; git clone https://github.com/theodo/dojo-secu.git)
-        (cd /home/ec2-user/dojo-secu; git checkout master)
+        (cd /home/ec2-user/dojo-secu; git checkout setup-domain-name)
 
         sudo amazon-linux-extras install -y postgresql10
 
@@ -87,10 +77,6 @@ resource "aws_instance" "worker-ec2" {
         private_alb_dns=${data.terraform_remote_state.alb.outputs.alb-dns}
         replace_cmd="s/alb_private_dns/$private_alb_dns/g"
         (cd /home/ec2-user/dojo-secu/backend; sed -i $replace_cmd .env)
-
-        website_s3_bucket=${data.terraform_remote_state.s3-website.outputs.s3-url}
-        replace_cmd="s/s3_bucket_endpoint/$website_s3_bucket/g"
-        (cd /home/ec2-user/dojo-secu/backend/; sed -i $replace_cmd .env)
 
         (cd /home/ec2-user/dojo-secu; /usr/local/bin/docker-compose up -d)
  	EOF
