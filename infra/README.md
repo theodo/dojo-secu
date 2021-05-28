@@ -29,7 +29,7 @@
 - Destroy the entire stack (infra)
   - `terraform destroy -auto-approve`
 
-### To SSH on Backend 
+### To SSH on Backend Worker EC2
 - In `infra`
   - `./ssh-worker.sh`  - You need to have the **aws-dojo-secu.pem** file in `infra` directory (you can find it in vault.kdbx)
   - this script does a SSH with Agent Forwarding directly into the Worker EC2 (first SSH in Bastion and then automatically SSH in worker)
