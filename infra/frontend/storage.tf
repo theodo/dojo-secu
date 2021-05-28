@@ -6,7 +6,7 @@ provider "aws" {
 data "aws_availability_zones" "all" {}
 
 resource "aws_s3_bucket" "frontend-dojo-security-theodo" {
-  bucket = "frontend-dojo-security-theodo"
+  bucket = "deathstar.dojo.theo.do"
   website {
     index_document = "index.html"
     error_document = "index.html"
@@ -14,7 +14,7 @@ resource "aws_s3_bucket" "frontend-dojo-security-theodo" {
 }
 
 resource "aws_s3_bucket_policy" "frontend-s3-policy" {
-  bucket = "frontend-dojo-security-theodo"
+  bucket = "deathstar.dojo.theo.do"
 
   policy = jsonencode({
       Version = "2012-10-17"
