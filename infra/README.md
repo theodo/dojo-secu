@@ -31,8 +31,8 @@
 
 ### To SSH on Backend 
 - In `infra`
-  - `./ssh-worker.sh`  - You need to have the aws-dojo-secu.pem file in `infra` directory (you can find it in vault.kdbx)
-  - the script do a JUMP SSH (first SSH in Bastion and then automatically SSH in worker)
+  - `./ssh-worker.sh`  - You need to have the **aws-dojo-secu.pem** file in `infra` directory (you can find it in vault.kdbx)
+  - this script does a SSH with Agent Forwarding directly into the Worker EC2 (first SSH in Bastion and then automatically SSH in worker)
 
 ### To apply Fixtures in PGSQL database on backend
 - On worker EC2
