@@ -28,3 +28,22 @@
   - `terraform apply -auto-approve`
 - Destroy the entire stack (infra)
   - `terraform destroy -auto-approve`
+
+### To SSH on Backend 
+- In `infra`
+  - `./ssh-worker.sh`  - You need to have the aws-dojo-secu.pem file in `infra` directory (you can find it in vault.kdbx)
+  - the script do a JUMP SSH (first SSH in Bastion and then automatically SSH in worker)
+
+### To apply Fixtures in PGSQL database on backend
+- On worker EC2
+```
+cd dojo-secu
+sudo su
+docker exec -it dojo-secu_php_1 bin/console hautelook:fixtures:load
+```
+
+you can use PGSQL client to see database tables
+```
+psql --host=localhost --port=5432 --username=api-platform --dbname=api
+SELECT * from app_users;
+```
