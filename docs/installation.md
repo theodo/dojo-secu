@@ -6,6 +6,12 @@ In development:
   - it manages hot reloading
 - the backend is launched with docker-compose
 
+## Prepare your environment variables
+
+```bash
+cp .env.local.dist .env.local
+```
+
 ## Build the docker images
 
 To build the application, launch:
