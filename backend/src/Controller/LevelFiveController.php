@@ -2,48 +2,82 @@
 
 namespace App\Controller;
 
-use App\Entity\Soldier;
+use App\Entity\Chat;
+use App\Entity\Message;
 use App\Entity\User;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class LevelFiveController extends AbstractController
 {
     /**
-     * @Route("/api/level-five/level-up", methods={"PUT"})
+     * @Route("/api/chat", methods={"GET"})
      */
-    public function levelUp(Request $request): JsonResponse
+    public function chatAction(): JsonResponse
     {
-        $em = $this->getDoctrine()->getManager();
+        $entityManager = $this->getDoctrine()->getManager();
 
         /** @var User $user */
         $user = $this->getUser();
-        if (\in_array(User::ROLES['level_five'], $user->getRoles())) {
-            throw new BadRequestHttpException('You have already been granted this role');
+        if (!\in_array(User::ROLES['level_five'], $user->getRoles())) {
+            throw new BadRequestHttpException('You need to be an admiral to execute this action');
         }
 
-        if (!\in_array(User::ROLES['level_four'], $user->getRoles())) {
-            throw new BadRequestHttpException('You need to be a commander to execute this action');
-        }
+        $messagesRepository = $entityManager->getRepository(Message::class);
+        $messages = $messagesRepository->findByUser($user);
 
+        return new JsonResponse($messages);
+    }
+
+    /**
+     * @Route("/api/chat/{id}", methods={"GET"})
+     */
+    public function chatAdminAction($id): JsonResponse
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        /** @var User $user */
+        $user = $this->getUser();
+        if (!\in_array(User::ROLES['level_seven'], $user->getRoles())) {
+            throw new BadRequestHttpException('You need to be a supreme leader to execute this action');
+        }
+        $usersRepository = $entityManager->getRepository(User::class);
+        $user = $usersRepository->findByEmail($id);
+
+        $messagesRepository = $entityManager->getRepository(Message::class);
+        $messages = $messagesRepository->findByUser($user);
+
+        return new JsonResponse($messages);
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @throws \Exception
+     * @Route("/api/messages", methods={"POST"})
+     *
+     */
+    public function addMessageAction(Request $request)
+    {
         $requestContent = \json_decode($request->getContent(), 'json');
+        $messageText = $requestContent['text'];
+        $user = $this->getUser();
+        $entityManager = $this->getDoctrine()->getManager();
+        $chatRepository = $entityManager->getRepository(Chat::class);
+        $chat = $chatRepository->findOneBy(['chatUser' => $user]);
 
-        if (!\array_key_exists('access_code', $requestContent)) {
-            throw new BadRequestHttpException('You must provide an access code');
-        }
+        $message = new Message();
+        $message->setAuthor($this->getUser());
+        $message->setCreatedAt(new \DateTime());
+        $message->setChat($chat);
+        $message->setText($messageText);
 
-        $accessCode = $requestContent['access_code'];
+        $entityManager->persist($message);
+        $entityManager->flush();
 
-        if('code_provisoire' !== $accessCode) {
-            throw new BadRequestHttpException('The access code you have entered is not valid');
-        }
-
-        $user->addRole('level_six');
-        $em->flush();
-
-        return new JsonResponse($user->getRoles());
+        return new JsonResponse([], 204);
     }
 }
