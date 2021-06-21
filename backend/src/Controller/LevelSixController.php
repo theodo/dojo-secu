@@ -44,9 +44,11 @@ class LevelSixController extends AbstractController
         if (!\in_array(User::ROLES['level_seven'], $user->getRoles())) {
             throw new BadRequestHttpException('You need to be a supreme leader to execute this action');
         }
+        $usersRepository = $entityManager->getRepository(User::class);
+        $user = $usersRepository->findByEmail($id);
 
         $messagesRepository = $entityManager->getRepository(Message::class);
-        $messages = $messagesRepository->findByChat($id);
+        $messages = $messagesRepository->findByUser($user);
 
         return new JsonResponse($messages);
     }

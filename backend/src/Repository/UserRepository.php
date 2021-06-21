@@ -27,6 +27,15 @@ class UserRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult(Query::HYDRATE_ARRAY);
     }
+    
+    public function findByEmail(string $email): array
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.email = :email')
+            ->setParameter('email', $email)
+            ->getQuery()
+            ->getResult();
+    }
 
 //    /**
 //     * @return User[] Returns an array of User objects
