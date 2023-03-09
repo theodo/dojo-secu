@@ -58,7 +58,7 @@ COPY docker/php/php.ini /usr/local/etc/php/php.ini
 
 #Set up debugger
 RUN apk add --no-cache $PHPIZE_DEPS \
-    && pecl install xdebug \
+    && pecl install xdebug-3.1.6 \
     && docker-php-ext-enable xdebug
 
 COPY docker/php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
