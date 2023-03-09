@@ -7972,12 +7972,12 @@
             "version": "2.7.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/hautelook/AliceBundle.git",
+                "url": "https://github.com/theofidry/alicebundle.git",
                 "reference": "0fb5cefc3efc3a120be0458ac68b974fa124bfb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/0fb5cefc3efc3a120be0458ac68b974fa124bfb3",
+                "url": "https://api.github.com/repos/theofidry/alicebundle/zipball/0fb5cefc3efc3a120be0458ac68b974fa124bfb3",
                 "reference": "0fb5cefc3efc3a120be0458ac68b974fa124bfb3",
                 "shasum": ""
             },
@@ -8034,8 +8034,8 @@
                 "symfony"
             ],
             "support": {
-                "issues": "https://github.com/hautelook/AliceBundle/issues",
-                "source": "https://github.com/hautelook/AliceBundle/tree/2.7.3"
+                "issues": "https://github.com/theofidry/alicebundle/issues",
+                "source": "https://github.com/theofidry/alicebundle/tree/2.7.3"
             },
             "funding": [
                 {
