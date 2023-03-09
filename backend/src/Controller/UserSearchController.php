@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -34,11 +35,10 @@ class UserSearchController extends AbstractController
             throw new BadRequestHttpException('You are trying to truncate the db, that is not nice :(');
         }
 
-        $RAW_QUERY = "SELECT * FROM app_users WHERE email='".$query."';";
+        $users = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->searchUsers($query);
 
-        $statement = $this->em->getConnection()->prepare($RAW_QUERY);
-        $statement->execute();
-
-        return new JsonResponse($statement->fetchAll());
+        return new JsonResponse($users);
     }
 }

@@ -2,7 +2,6 @@ App\Entity\User:
     jean_moust:
         email (unique): jean_moust
         password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$ZnRYMWVpVnpURTQ3bXlmMA\$ELC4YJX0PzKqlkdkxAU1RrirOo3B8WK6JBTILdyYLnU' # = lolilol
-        roles: ['ROLE_MINION']
     test_roles:
         email (unique): test_roles
         password: '\$argon2i\$v=19\$m=1024,t=2,p=2\$ai4zeDQ2STBneGlnOWVjMg\$C8Tql2jNkO35qZKsYGadMD0pB36P70nFBut1FW/pHZo' # = test12349

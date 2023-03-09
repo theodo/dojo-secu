@@ -49,12 +49,9 @@ security:
         api:
             pattern:   ^/
             stateless: true
-            anonymous: false
-            guard:
-                authenticators:
-                  - lexik_jwt_authentication.jwt_token_authenticator
+            anonymous: true
 
     access_control:
     - { path: ^/auth/jwt, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/docs, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/, roles: IS_AUTHENTICATED_FULLY, ip: [127.0.0.1, ::1] }
+    - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: [127.0.0.1, ::1] }
